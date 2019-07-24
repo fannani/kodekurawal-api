@@ -15,3 +15,14 @@ type Stage {
     script: String
     updated_at: String!
 }
+
+type Query {
+    stages: [Stage]
+}
+
+type Mutation {
+    addStage(title:String!, teory:String, time:String,index:Int, index:Int,exp_reward: Int,course:ID!,language:String ):Stage
+    updateStage(id:ID!,title:String,teory:String,index:Int,time:Int,exp_reward:Int,course:ID!,file:Upload,script:String,language:String):Stage
+    deleteStage(id:ID!):Stage
+    reorderStage(courseid:ID,source:ID, destination:Int):Course
+}

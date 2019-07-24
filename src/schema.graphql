@@ -5,7 +5,7 @@
 # import Query.*, Mutation.* from "course/stage/mission/mission.graphql"
 # import Query.*, Mutation.* from "course/stage/score/score.graphql"
 # import Query.*, Mutation.* from "player/player.graphql"
-# import Query.*, Mutation.* from "user/user.graphql"
+# import Query.* from "user/user.graphql"
 # import Query.*, Mutation.* from "badge/badge.graphql"
 # import Query.*, Mutation.* from "testcase/testcase.graphql"
 # import Query.*, Mutation.* from "course/stage/mission/testcase/testcaseMission.graphql"

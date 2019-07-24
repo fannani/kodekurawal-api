@@ -19,3 +19,4 @@ type Query {
 type Mutation {
     addAchievement(title: String!,continuous : Boolean! ,file : Upload): Achievement
 }
+

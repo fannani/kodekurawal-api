@@ -5,3 +5,12 @@ type Mission {
     score: Int!
     updated_at: String!
 }
+
+type Query {
+    missions: [Mission]
+}
+
+type Mutation {
+    addMission(quest: String!,score:Int!,stage:ID!):Mission
+    updateMission(id:ID!,quest:String,score:Int):Mission
+}
