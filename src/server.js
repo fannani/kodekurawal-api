@@ -48,16 +48,6 @@ const apollo = new ApolloServer({
   },
 });
 
-if (process.env.MODE === 'development') {
-  app.use(
-    require('webpack-dev-middleware')(compiler, {
-      noInfo: true,
-      publicPath: webpackConfig.output.publicPath,
-    }),
-  );
-  app.use(require('webpack-hot-middleware')(compiler));
-}
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(passport.initialize());
