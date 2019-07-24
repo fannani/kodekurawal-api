@@ -1,12 +1,12 @@
 import express from 'express';
 import http from 'http';
-import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import { ApolloServer } from 'apollo-server-express';
 import webpack from 'webpack';
 import path from 'path';
 import passport from 'passport';
+import mongoose from 'mongoose';
 import webpackConfig from '../webpack.dev';
 import routes from './routes';
 import schema from './data/schema';
