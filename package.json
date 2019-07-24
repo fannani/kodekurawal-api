@@ -1,0 +1,15 @@
+{
+  "name": "kodekurawal-api",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rahadyan fannani",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.7.0",
+    "graphql": "^14.4.2"
+  }
+}
