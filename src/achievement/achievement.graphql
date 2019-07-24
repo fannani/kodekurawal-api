@@ -1,0 +1,12 @@
+type Achievement {
+    id: ID!
+    text: String!
+    _id: ID!
+    title: String!
+    continuous: Boolean!
+    caption: String
+    star: Int
+    target_point: Int
+    point: Int
+    updated_at: String!
+}

@@ -1,0 +1,7 @@
+
+type Badge {
+    _id: ID!
+    title: String
+    imageid: String
+    updated_at: String!,
+}

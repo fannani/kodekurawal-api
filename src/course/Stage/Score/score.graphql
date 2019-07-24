@@ -1,0 +1,10 @@
+
+
+type Score {
+    _id: ID!
+    score: Int!
+    time: Int!
+    stars: [Boolean]!
+    updated_at: String!
+    script: String!
+}

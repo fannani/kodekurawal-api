@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "rahadyan fannani",
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^2.7.0",
-    "graphql": "^14.4.2"
+    "graphql": "^14.4.2",
+    "graphql-import": "^0.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
   }
 }

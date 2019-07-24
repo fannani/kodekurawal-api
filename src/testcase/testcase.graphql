@@ -1,0 +1,4 @@
+type TestCase {
+    _id: ID!
+
+}

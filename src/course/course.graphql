@@ -1,0 +1,9 @@
+type Course {
+    _id: ID!
+    name: String!
+    index: Int
+    script: String
+    desc: String!
+    imageid: String
+    updated_at: String!
+}

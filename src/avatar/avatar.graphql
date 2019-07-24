@@ -1,0 +1,9 @@
+
+type Avatar {
+    _id: ID!
+    title: String
+    min_exp: Int
+    imageid: String
+    unlock: Boolean
+    updated_at: String!
+}

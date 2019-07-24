@@ -1,0 +1,17 @@
+type Stage {
+    _id: ID!
+    title: String!
+    teory: String
+    exp_reward: Int
+    index: Int
+    time: Int
+    win: Boolean
+    score: Int
+    badge_name: String
+    badge_image: String
+    language: String
+    stars: [Boolean]
+    imageid: String
+    script: String
+    updated_at: String!
+}

@@ -1,0 +1,26 @@
+# import Achievement from "achievement/achievement.graphql"
+# import Avatar from "avatar/avatar.graphql"
+# import Course from "course/course.graphql"
+# import Stage from "course/stage/stage.graphql"
+# import Mission from "course/stage/mission/mission.graphql"
+# import Score from "course/stage/score/score.graphql"
+# import Player from "player/player.graphql"
+# import User from "user/user.graphql"
+# import Badge from "badge/badge.graphql"
+# import TestCase from "testcase/testcase.graphql"
+# import TestCaseMission from "course/stage/mission/testcase/testcaseMission.graphql"
+
+type Query {
+  achievements: [Achievement],
+  courses: [Course],
+  stages: [Stage],
+  missions: [Mission],
+  scores: [Score],
+  players: [Player],
+  users: [User],
+  badges: [Badge],
+  testcases: [TestCase],
+  testcaseMissions: [TestCaseMission],
+  avatars: [Avatar],
+
+}

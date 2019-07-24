@@ -1,0 +1,7 @@
+
+type Mission {
+    _id: ID!
+    quest: String!
+    score: Int!
+    updated_at: String!
+}
