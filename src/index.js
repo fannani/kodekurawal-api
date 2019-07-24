@@ -1,14 +1,12 @@
-const { ApolloServer } = require('apollo-server');
-const {importSchema} = require('graphql-import');
-const { GraphQLUpload } = require('graphql-upload');
+require('@babel/register')({
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        useBuiltIns: 'usage',
+      },
+    ],
+  ],
+});
 
-
-const typeDefs = importSchema(__dirname + '/schema.graphql')
-console.log(typeDefs);
-const resolvers = {
-    Upload: GraphQLUpload
-}
-const server = new ApolloServer({ typeDefs,resolvers });
-server.listen().then(({url}) => {
-    console.log(`🚀 Server ready at ${url}`)
-})
+require('./server');
