@@ -7,3 +7,11 @@ type Avatar {
     unlock: Boolean
     updated_at: String!
 }
+
+type Query {
+    avatars: [Avatar]
+}
+
+type Mutation {
+    addAvatar(title: String!,min_exp : Int! ,image : Upload): Avatar
+}

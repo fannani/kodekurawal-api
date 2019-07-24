@@ -1,0 +1,15 @@
+
+type PlayerLevel {
+    _id: ID!
+    level: Int!
+    exp_req: Int!
+    updated_at :String!
+}
+
+type Query {
+    playerLevels: [PlayerLevel]
+}
+
+type Mutation {
+    addPlayerLevel(level:Int!,exp_req:Int!):PlayerLevel
+}

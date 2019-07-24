@@ -1,0 +1,20 @@
+
+
+type PlayerAchievement {
+    _id : ID!
+    player : ID!
+    achievement: ID!
+    star : Int!,
+    point : Int!,
+    updated_at: String!
+}
+
+type Query {
+    playerAchievements: [PlayerAchievement]
+}
+
+type Mutation {
+    addPlayerAchievement(player: ID!, achievement: ID!,star : Int!,point: Int!):Achievement
+    giveAchievement(player:ID!, achievement:ID!):Achievement
+}
+

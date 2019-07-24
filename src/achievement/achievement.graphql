@@ -10,3 +10,12 @@ type Achievement {
     point: Int
     updated_at: String!
 }
+
+type Query {
+    achievements: [Achievement]
+
+}
+
+type Mutation {
+    addAchievement(title: String!,continuous : Boolean! ,file : Upload): Achievement
+}

@@ -3,3 +3,18 @@ type Player {
     _id: ID!
 
 }
+
+type Query {
+    players: [Player]
+}
+
+type Mutation {
+    addEnergy(energy: Int!, userid: ID!):Player
+    changeAvatar(player: ID!, avatar: ID!):Player
+    addBadge(id: ID!, badge: ID!):Player
+    setTutorial(userid: ID!, tutorial: Boolean, index:Int):Player
+    addExp(exp: Int!, userid: ID!):Player
+    addFriend(playerid: ID!, friendid: ID!):Player
+    register(name:String!,email:String!,password:String!):User
+}
+

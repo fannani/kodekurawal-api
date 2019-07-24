@@ -12,7 +12,8 @@
   "dependencies": {
     "apollo-server": "^2.7.0",
     "graphql": "^14.4.2",
-    "graphql-import": "^0.7.1"
+    "graphql-import": "^0.7.1",
+    "graphql-upload": "^8.0.7"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"

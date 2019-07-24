@@ -7,3 +7,14 @@ type Course {
     imageid: String
     updated_at: String!
 }
+
+type Query {
+    courses: [Course]
+}
+
+type Mutation {
+    addCourse(name : String!, desc: String!, script: String, file: Upload):Course
+    updateCourse(id : ID!, name: String, desc: String, script:String):Course
+    deleteCourse(id: ID!):Course
+    uploadImage(courseid: ID, file: Upload):String
+}

@@ -2,3 +2,12 @@ type TestCase {
     _id: ID!
 
 }
+
+type Query {
+    testcases: [TestCase]
+}
+
+type Mutation {
+    addTestCase(caption:String!,script:String!):TestCase
+    deleteTestCase(id:ID!):TestCase
+}
