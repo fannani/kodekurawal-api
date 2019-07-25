@@ -2,13 +2,10 @@ version: "3"
 services:
   mongo:
     image: mongo
-    ports:
-      - "27017:27017"
   app:
     restart: always
     build: .
     ports:
       - "3000:3000"
-    links:
-      - mongo
+
 
