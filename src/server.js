@@ -3,11 +3,9 @@ import http from 'http';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import { ApolloServer } from 'apollo-server-express';
-import webpack from 'webpack';
 import path from 'path';
 import passport from 'passport';
 import mongoose from 'mongoose';
-import webpackConfig from '../webpack.dev';
 import routes from './routes';
 import schema from './data/schema';
 import './config/passport';
@@ -20,7 +18,6 @@ admin.initializeApp({
 });
 dotenv.config({ path: path.join(__dirname, '../.env') });
 const { ObjectId } = mongoose.Types;
-const compiler = webpack(webpackConfig);
 
 mongoose.connect(
   process.env.DB_HOST,
@@ -51,7 +48,6 @@ const apollo = new ApolloServer({
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(passport.initialize());
-app.use(express.static(path.resolve(__dirname, '../dist')));
 apollo.applyMiddleware({
   app,
   path: '/api',
