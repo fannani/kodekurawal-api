@@ -1,0 +1,17 @@
+
+type Badge {
+    _id: ID!
+    title: String
+    imageid: String
+    updated_at: String!
+}
+
+type Query {
+    badges: [Badge]
+}
+
+type Mutation {
+    addBadge(title : String!, imageid: String):Badge
+    updateBadge(id: ID, title: String,image: Upload,course:ID):Badge
+
+}

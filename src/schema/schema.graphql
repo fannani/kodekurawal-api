@@ -1,0 +1,15 @@
+# import Query.*, Mutation.* from "achievement/achievement.graphql"
+# import Query.*, Mutation.* from "avatar/avatar.graphql"
+# import Query.*, Mutation.* from "course/course.graphql"
+# import Query.*, Mutation.* from "course/stage/stage.graphql"
+# import Query.*, Mutation.* from "course/stage/mission/mission.graphql"
+# import Query.*, Mutation.* from "course/stage/score/score.graphql"
+# import Query.*, Mutation.* from "player/player.graphql"
+# import Query.* from "user/user.graphql"
+# import Query.*, Mutation.* from "badge/badge.graphql"
+# import Query.*, Mutation.* from "testcase/testcase.graphql"
+# import Query.*, Mutation.* from "course/stage/mission/testcase/testcaseMission.graphql"
+# import Query.*, Mutation.* from "player/achievement/playerAchievement.graphql"
+# import Query.*, Mutation.* from "player/level/playerLevel.graphql"
+
+scalar Upload

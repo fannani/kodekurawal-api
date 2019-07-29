@@ -1,0 +1,19 @@
+
+
+type Score {
+    _id: ID!
+    score: Int!
+    time: Int!
+    stars: [Boolean]!
+    updated_at: String!
+    script: String!
+}
+
+type Query {
+    scores:[Score]
+}
+
+type Mutation {
+    addScore(player:ID!,stage:ID!,course:ID!,score:Int!,time:Int!,stars:[Boolean]!,script:String!):Score
+
+}

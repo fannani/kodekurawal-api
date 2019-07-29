@@ -1,0 +1,17 @@
+
+type Avatar {
+    _id: ID!
+    title: String
+    min_exp: Int
+    imageid: String
+    unlock: Boolean
+    updated_at: String!
+}
+
+type Query {
+    avatars: [Avatar]
+}
+
+type Mutation {
+    addAvatar(title: String!,min_exp : Int! ,image : Upload): Avatar
+}
