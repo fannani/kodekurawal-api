@@ -12,3 +12,7 @@ after_success:
   - docker build -t rahadyan/kodekurawal-api --build-arg PORT=$PORT --build-arg DB_HOST=$DB_HOST --build-arg MODE=$MODE .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push rahadyan/kodekurawal-api
+
+branches:
+  only:
+    - master
