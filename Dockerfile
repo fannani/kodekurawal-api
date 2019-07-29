@@ -1,1 +1,7 @@
-https://www.eventbrite.com/e/cangkruxan6-ux-research-methodology-tickets-66293576873
+FROM node:12
+WORKDIR /usr/src/app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+CMD [ "npm","start" ]
