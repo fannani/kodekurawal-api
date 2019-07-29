@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import passport from 'passport';
 
 const router = express.Router();
