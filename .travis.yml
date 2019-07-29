@@ -3,12 +3,12 @@ services:
   - docker
 
 before_install:
-  - docker build -t rahadyan/kodekurawal-api-test -f ./Dockerfile.dev .
+  - docker build -t rahadyan/kodekurawal-api-test -f ./Dockerfile.dev --build-arg PORT --build-arg DB_HOST --build-arg MODE .
 
 script:
   - docker run rahadyan/kodekurawal-api-test npm test
 
 after_success:
-  - docker build -t rahadyan/kodekurawal-api .
+  - docker build -t rahadyan/kodekurawal-api --build-arg PORT --build-arg DB_HOST --build-arg MODE .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push rahadyan/kodekurawal-api
