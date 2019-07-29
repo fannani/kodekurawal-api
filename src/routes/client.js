@@ -10,7 +10,15 @@ router.get(
 );
 
 router.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/../../dist/index.html'));
+  res.send(`
+		<div align="center">
+			___________________
+			<br/>
+			Welcome to KodeKurawal API
+			<br/>
+			______🚀😀🚀_____
+		</div>
+	`);
 });
 
 export default router;
