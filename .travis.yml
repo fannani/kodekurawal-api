@@ -1,0 +1,14 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t rahadyan/kodekurawal-api-test -f ./Dockerfile.dev
+
+script:
+  - docker run rahadyan/kodekurawal-api-test npm test -- --coverage
+
+after_success:
+  - docker build -t rahadyan/kodekurawal-api .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push rahadyan/kodekurawal-api
