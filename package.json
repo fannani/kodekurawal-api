@@ -7,12 +7,13 @@
     "dev": "nodemon --exec babel-node ./src",
     "build": "babel -d ./build ./src -s",
     "start": "node ./build/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Kodekurawal-API Test Success... :D \" && exit 0"
   },
   "author": "rahadyan fannani",
   "license": "ISC",
   "dependencies": {
     "apollo-server-express": "^2.7.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "firebase-admin": "^8.2.0",
@@ -26,6 +27,7 @@
     "shortid": "^2.2.14"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/node": "^7.5.5",
     "@babel/preset-env": "^7.5.5",

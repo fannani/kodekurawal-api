@@ -2,6 +2,7 @@ import express from 'express';
 import http from 'http';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import { ApolloServer } from 'apollo-server-express';
 import path from 'path';
 import passport from 'passport';
@@ -45,6 +46,7 @@ const apollo = new ApolloServer({
   },
 });
 
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(passport.initialize());
