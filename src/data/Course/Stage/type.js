@@ -9,10 +9,21 @@ import {
 } from 'graphql';
 
 import CourseType from '../type';
+import QuestionType from './Question/type';
 import Stage from './Stage';
 import Course from '../Course';
 import Mission from './Mission/Mission';
 import MissionType from './Mission/type';
+
+const Type = new GraphQLEnumType({
+  name: 'StageType',
+  values: {
+    CODING: { value: "CODING" },
+    MATERIAL: { value: "MATERIAL" },
+    QUIZ: {value : "QUIZ"}
+  }
+});
+
 
 const StageType = new GraphQLObjectType({
   name: 'Stage',
@@ -20,6 +31,8 @@ const StageType = new GraphQLObjectType({
   fields: () => ({
     _id: { type: GraphQLNonNull(GraphQLID) },
     title: { type: GraphQLNonNull(GraphQLString) },
+    type : { type : Type },
+    questions : { type: GraphQLList(QuestionType)},
     teory: { type: GraphQLString },
     exp_reward: { type: GraphQLInt },
     index: { type: GraphQLInt },
