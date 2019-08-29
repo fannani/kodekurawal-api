@@ -1,8 +1,0 @@
-type User {
-    _id: ID!
-
-}
-
-type Query {
-    users: [User]
-}

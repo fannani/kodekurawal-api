@@ -6,10 +6,10 @@ type PlayerLevel {
     updated_at :String!
 }
 
-type Query {
+extend type Query {
     playerLevels: [PlayerLevel]
 }
 
-type Mutation {
+extend type Mutation {
     addPlayerLevel(level:Int!,exp_req:Int!):PlayerLevel
 }

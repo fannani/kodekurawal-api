@@ -1,3 +1,5 @@
+#import 'stage/type.graphql'
+
 type Course {
     _id: ID!
     name: String!
@@ -8,11 +10,11 @@ type Course {
     updated_at: String!
 }
 
-type Query {
+extend type Query {
     courses: [Course]
 }
 
-type Mutation {
+extend type Mutation {
     addCourse(name : String!, desc: String!, script: String, file: Upload):Course
     updateCourse(id : ID!, name: String, desc: String, script:String):Course
     deleteCourse(id: ID!):Course

@@ -8,10 +8,10 @@ type Avatar {
     updated_at: String!
 }
 
-type Query {
+extend type Query {
     avatars: [Avatar]
 }
 
-type Mutation {
+extend type Mutation {
     addAvatar(title: String!,min_exp : Int! ,image : Upload): Avatar
 }

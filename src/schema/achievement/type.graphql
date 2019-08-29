@@ -11,12 +11,12 @@ type Achievement {
     updated_at: String!
 }
 
-type Query {
+extend type Query {
     achievements: [Achievement]
 
 }
 
-type Mutation {
+extend type Mutation {
     addAchievement(title: String!,continuous : Boolean! ,file : Upload): Achievement
 }
 

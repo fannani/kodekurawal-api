@@ -6,11 +6,11 @@ type Badge {
     updated_at: String!
 }
 
-type Query {
+extend type Query {
     badges: [Badge]
 }
 
-type Mutation {
+extend type Mutation {
     addBadge(title : String!, imageid: String):Badge
     updateBadge(id: ID, title: String,image: Upload,course:ID):Badge
 

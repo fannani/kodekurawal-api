@@ -1,0 +1,16 @@
+type User {
+    _id:  ID!,
+    email:  String!
+    name:  String!
+    role:  String!
+    city:  String
+    province:  String
+    last_login:  String
+    userdetailid:  String!
+    password:  String!
+    updated_at:  String!
+}
+
+extend type Query {
+    users(_id : ID): [User]
+}

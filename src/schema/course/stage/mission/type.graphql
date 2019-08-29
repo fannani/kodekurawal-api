@@ -1,3 +1,4 @@
+#import 'testcase/type.graphql'
 
 type Mission {
     _id: ID!
@@ -6,11 +7,11 @@ type Mission {
     updated_at: String!
 }
 
-type Query {
+extend type Query {
     missions: [Mission]
 }
 
-type Mutation {
+extend type Mutation {
     addMission(quest: String!,score:Int!,stage:ID!):Mission
     updateMission(id:ID!,quest:String,score:Int):Mission
 }

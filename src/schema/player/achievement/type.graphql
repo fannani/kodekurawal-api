@@ -9,11 +9,11 @@ type PlayerAchievement {
     updated_at: String!
 }
 
-type Query {
+extend type Query {
     playerAchievements: [PlayerAchievement]
 }
 
-type Mutation {
+extend type Mutation {
     addPlayerAchievement(player: ID!, achievement: ID!,star : Int!,point: Int!):Achievement
     giveAchievement(player:ID!, achievement:ID!):Achievement
 }

@@ -1,13 +1,15 @@
 type TestCase {
-    _id: ID!
-
+    _id: ID
+    caption: String
+    script: String
+    updated_at: String
 }
 
-type Query {
+extend type Query {
     testcases: [TestCase]
 }
 
-type Mutation {
+extend type Mutation {
     addTestCase(caption:String!,script:String!):TestCase
     deleteTestCase(id:ID!):TestCase
 }
