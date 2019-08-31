@@ -1,7 +1,10 @@
-import User from "User";
-import Stage from "Stage";
+import { merge } from 'lodash'
+import User from "../../user/User";
+import Stage from "./Stage";
 import {storeFB} from "../../../utils/upload";
-import Course from "../Course";
+import Course from "../../course/Course";
+import mission from './mission/resolvers'
+import score from './score/resolvers'
 
 const resolvers = {
   Query: {
@@ -75,4 +78,4 @@ const resolvers = {
   }
 };
 
-export default resolvers;
+export default merge(resolvers,mission,score);

@@ -1,11 +1,10 @@
 import { merge } from 'lodash';
-import mongoose from 'mongoose';
-const TestCase = mongoose.model('TestCase');
-const User = mongoose.model("User");
-const Player = mongoose.model("Player");
-const Avatar = mongoose.model("Avatar");
-const Achievement = mongoose.model("Achievement");
-const Score = mongoose.model("Score");
+import TestCase from './TestCase';
+import User from "../user/User"
+import Player from "../player/Player"
+import Avatar from "../avatar/Avatar"
+import Achievement from "../achievement/Achievement"
+import Score from "../course/stage/score/Score"
 
 const resolvers = {
   Player : {

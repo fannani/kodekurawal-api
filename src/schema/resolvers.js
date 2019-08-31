@@ -1,10 +1,4 @@
-import './avatar/Avatar'
-import './achievement/Achievement'
-import './badge/Badge'
-import './course/Course'
-import './testcase/TestCase'
-import './user/User'
-import './player/Player'
+
 import { merge } from 'lodash'
 import achievement from './achievement/resolvers'
 import avatar from './avatar/resolvers'

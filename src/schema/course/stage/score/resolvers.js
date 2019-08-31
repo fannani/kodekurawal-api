@@ -1,5 +1,4 @@
-import User from "User";
-import Score from "../../../../data/Course/Stage/Score/Score";
+import Score from "../../../course/stage/score/Score";
 
 const resolvers = {
   Query: {

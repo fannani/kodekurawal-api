@@ -1,4 +1,4 @@
-import Mission from "Mission";
+import Mission from "./Mission";
 
 const resolvers = {
   Query: {

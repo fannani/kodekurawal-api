@@ -1,4 +1,6 @@
+import {merge} from 'lodash'
 import Course from "./Course";
+import stage from './stage/resolvers';
 import {storeFB} from "../../utils/upload";
 
 const resolvers = {
@@ -40,4 +42,4 @@ const resolvers = {
 
 };
 
-export default resolvers;
+export default merge(resolvers,stage);

@@ -15,3 +15,4 @@ extend type Query {
 extend type Mutation {
     addAvatar(title: String!,min_exp : Int! ,image : Upload): Avatar
 }
+

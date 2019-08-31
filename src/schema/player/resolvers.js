@@ -3,8 +3,8 @@ import mongoose from 'mongoose'
 import playerAchievement from './achievement/resolvers'
 import playerLevel from './level/resolvers'
 
-const Player = mongoose.model("Player")
-const User = mongoose.model("User")
+import Player from "./Player"
+import User from "../user/User"
 import {UserInputError} from "apollo-server-errors";
 
 const resolvers = {
