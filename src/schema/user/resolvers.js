@@ -1,5 +1,5 @@
-import User from "User";
-
+import mongoose from 'mongoose'
+const User = mongoose.model("User")
 const resolvers = {
   Query: {
     users: (_, args) => {

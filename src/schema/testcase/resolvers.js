@@ -1,10 +1,11 @@
 import { merge } from 'lodash';
-import TestCase from './TestCase';
-import User from "User";
-import Player from "Player";
-import Avatar from "Avatar";
-import Achievement from "Achievement";
-import Score from "Score";
+import mongoose from 'mongoose';
+const TestCase = mongoose.model('TestCase');
+const User = mongoose.model("User");
+const Player = mongoose.model("Player");
+const Avatar = mongoose.model("Avatar");
+const Achievement = mongoose.model("Achievement");
+const Score = mongoose.model("Score");
 
 const resolvers = {
   Player : {
@@ -92,7 +93,7 @@ const resolvers = {
       },
   },
   Query: {
-    testcase: (_, args) => {
+    testcases: (_, args) => {
       return TestCase.find(args);
     },
   },

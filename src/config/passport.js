@@ -1,7 +1,7 @@
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import passportJWT from 'passport-jwt';
-import User from '../data/User/User';
+import User from '../schema/user/User';
 
 const JWTStrategy = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;

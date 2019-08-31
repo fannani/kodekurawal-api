@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
-import Score from './Stage/Score/Score';
-import Stage from './Stage/Stage';
+import Score from '../course/stage/score/Score'
+import Stage from '../course/stage/Stage'
 
 const CourseSchema = new mongoose.Schema({
   index: { type: Number, default: 1 },

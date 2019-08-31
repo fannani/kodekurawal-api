@@ -11,5 +11,5 @@ extend type Query {
 
 extend type Mutation {
     addTestCase(caption:String!,script:String!):TestCase
-    deleteTestCase(id:ID!):TestCase
+    deleteTestcase(id:ID!):TestCase
 }

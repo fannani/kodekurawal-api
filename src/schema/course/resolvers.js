@@ -1,5 +1,4 @@
-import User from "User";
-import Course from "../../data/Course/Course";
+import Course from "./Course";
 import {storeFB} from "../../utils/upload";
 
 const resolvers = {

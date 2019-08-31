@@ -1,9 +1,8 @@
-import PlayerLevel from "PlayerLevel";
-
-
+import mongoose from 'mongoose'
+const PlayerLevel = mongoose.model("PlayerLevel")
 const resolvers = {
   Query : {
-    playerlevel : () =>{
+    playerLevel : () =>{
       return PlayerLevel.find(args);
     }
   },

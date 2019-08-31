@@ -1,7 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
-
-import PlayerAchievement from '../Player/Achievement/PlayerAchievement';
-import DetailAchievement from './Detail/DetailAchievement';
+import DetailAchievement from '../achievement/detail/DetailAchievement'
+import PlayerAchievement from '../player/achievement/PlayerAchievement'
 
 const AchievementSchema = new Schema({
   title: String,

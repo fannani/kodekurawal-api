@@ -1,5 +1,5 @@
 
-import DetailAchievement from "DetailAchievement";
+import DetailAchievement from "./DetailAchievement";
 
 const resolvers = {
   Mutation: {

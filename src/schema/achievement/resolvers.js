@@ -1,9 +1,11 @@
-import Achievement from "Achievement";
+import { merge } from 'lodash'
+import Achievement from "./Achievement";
+import detailAchievement from './detail/resolvers'
 import {storeFB} from "../../utils/upload";
 
 const resolvers = {
   Query: {
-    achievement: async (_, args) => {
+    achievements: async (_, args) => {
       if (args.player) {
         let achievements = await Achievement.find();
         for (let i = 0; i < achievements.length; i++) {
@@ -35,4 +37,4 @@ const resolvers = {
 
 };
 
-export default resolvers;
+export default merge(resolvers,detailAchievement);

@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import Badge from "Badge";
+import Badge from "./Badge";
 import {storeFB} from "../../utils/upload";
 import Course from "../course/Course";
 

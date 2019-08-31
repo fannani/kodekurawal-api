@@ -1,11 +1,10 @@
 import mongoose, { Schema } from 'mongoose';
-import Score from '../Course/Stage/Score/Score';
-import Course from '../Course/Course';
-import PlayerLevel from './Level/PlayerLevel';
-import PlayerAchievement from './Achievement/PlayerAchievement';
-import DetailAchievement from '../Achievement/Detail/DetailAchievement';
-import Achievement from '../Achievement/Achievement';
-import Avatar from '../Avatar/Avatar';
+import PlayerLevel from '../player/level/PlayerLevel'
+import Achievement from '../achievement/Achievement'
+import DetailAchievement from '../achievement/detail/DetailAchievement'
+import Course from "../course/Course"
+
+const PlayerAchievement = mongoose.model('PlayerAchievement')
 
 const PlayerSchema = new Schema({
   energy: { type: Number, default: 0 },

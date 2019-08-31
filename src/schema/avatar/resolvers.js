@@ -1,4 +1,4 @@
-import Avatar from "../../data/Avatar/Avatar";
+import Avatar from "./Avatar";
 import {storeFB} from "../../utils/upload";
 
 const resolvers = {
@@ -8,7 +8,7 @@ const resolvers = {
     },
   },
   Mutation: {
-    addAvatar: (_,{ title, min_exp, image }) => {
+    addAvatar: async(_,{ title, min_exp, image }) => {
       const avatar = new Avatar({ title, min_exp });
       let imageid = '';
       if (image) {

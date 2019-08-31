@@ -9,6 +9,7 @@ import passport from 'passport';
 import mongoose from 'mongoose';
 import routes from './routes';
 import typeDefs from './schema/schema.graphql';
+import resolvers from './schema/resolvers';
 import './config/passport';
 import * as admin from 'firebase-admin';
 const serviceAccount = require('../firebasekey.json');
@@ -37,6 +38,7 @@ const app = express();
 const server = http.createServer(app);
 const apollo = new ApolloServer({
   typeDefs ,
+  resolvers,
   context: ({ req }) => ({
     user: req.user,
   }),

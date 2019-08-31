@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import Score from './Score/Score';
+const Score = mongoose.model("Score");
 
 const StageSchema = new mongoose.Schema({
   title: String,

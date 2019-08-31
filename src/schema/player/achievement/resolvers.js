@@ -1,7 +1,5 @@
-import PlayerAchievement from "../../../data/Player/Achievement/PlayerAchievement";
-import Player from "../../../data/Player/Player";
-
-
+import PlayerAchievement from "./PlayerAchievement";
+import Player from "../Player";
 const resolvers = {
   Query : {
     playerAchievements: (_,args) => {
