@@ -10,7 +10,7 @@ const resolvers = {
     },
   },
   Mutation: {
-    addStage: async(_, { title, teory, time, course, index, exp_reward, script, language }) => {
+    addStage: async (_, {title, teory, time, course, index, exp_reward, script, language}) => {
       let stage = new Stage({
         title,
         teory,
@@ -25,20 +25,20 @@ const resolvers = {
         stage.index = index;
       } else {
         const tmp = await Stage.findOne()
-          .where({ course })
+          .where({course})
           .sort('-index');
         if (tmp) stage.index = tmp.index + 1;
         else stage.index = 1;
       }
       return stage.save();
     },
-    },
-    updateStage: async(_, args) => {
+
+    updateStage: async (_, args) => {
       let id = '';
       if (args.file) {
-        const { filename, createReadStream } = await args.file;
+        const {filename, createReadStream} = await args.file;
         const stream = createReadStream();
-        const filestore = await storeFB({ stream, filename });
+        const filestore = await storeFB({stream, filename});
         id = filestore.id;
       }
       const editstage = await Stage.findById(args.id);
@@ -48,11 +48,11 @@ const resolvers = {
       editstage.imageid = id;
       return editstage.save();
     },
-    deleteStage: async(_,args) => {
+    deleteStage: async (_, args) => {
       const stage = await Stage.findByIdAndRemove(args.id);
       return stage;
     },
-    reorderStage: async(_,{ courseid, source, destination }) => {
+    reorderStage: async (_, {courseid, source, destination}) => {
       const current = await Stage.findOne({
         course: courseid,
         index: source,
@@ -60,21 +60,19 @@ const resolvers = {
       current.index = destination;
       if (source < destination) {
         await Stage.updateMany(
-          { course: courseid, index: { $lte: destination, $gt: source } },
-          { $inc: { index: -1 } },
+          {course: courseid, index: {$lte: destination, $gt: source}},
+          {$inc: {index: -1}},
         );
       } else if (destination < source) {
         await Stage.updateMany(
-          { course: courseid, index: { $gte: destination, $lt: source } },
-          { $inc: { index: 1 } },
+          {course: courseid, index: {$gte: destination, $lt: source}},
+          {$inc: {index: 1}},
         );
       }
       await current.save();
       return Course.findById(courseid);
-    },
     }
   }
-
 };
 
 export default resolvers;
