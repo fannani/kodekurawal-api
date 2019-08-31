@@ -1,7 +1,7 @@
 import User from "User";
-import Stage from "../../../data/Course/Stage/Stage";
+import Stage from "Stage";
 import {storeFB} from "../../../utils/upload";
-import Course from "../../../data/Course/Course";
+import Course from "../Course";
 
 const resolvers = {
   Query: {
@@ -52,7 +52,7 @@ const resolvers = {
       const stage = await Stage.findByIdAndRemove(args.id);
       return stage;
     },
-    reorderStage: async(_,args) => {
+    reorderStage: async(_,{ courseid, source, destination }) => {
       const current = await Stage.findOne({
         course: courseid,
         index: source,

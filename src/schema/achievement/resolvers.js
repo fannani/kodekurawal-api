@@ -3,7 +3,7 @@ import {storeFB} from "../../utils/upload";
 
 const resolvers = {
   Query: {
-    achievement: (_, args) => {
+    achievement: async (_, args) => {
       if (args.player) {
         let achievements = await Achievement.find();
         for (let i = 0; i < achievements.length; i++) {
@@ -15,7 +15,7 @@ const resolvers = {
     },
   },
   Mutation: {
-    addAchievement: (_,args) => {
+    addAchievement: async (_,{ title, continuous, file }) => {
       let id = '';
       if (file) {
         const { filename, createReadStream } = await file;

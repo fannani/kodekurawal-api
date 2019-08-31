@@ -1,4 +1,3 @@
-import User from "User";
 import Avatar from "../../data/Avatar/Avatar";
 import {storeFB} from "../../utils/upload";
 
@@ -9,7 +8,7 @@ const resolvers = {
     },
   },
   Mutation: {
-    addAvatar: (_,args) => {
+    addAvatar: (_,{ title, min_exp, image }) => {
       const avatar = new Avatar({ title, min_exp });
       let imageid = '';
       if (image) {

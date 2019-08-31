@@ -7,7 +7,7 @@ type PlayerLevel {
 }
 
 extend type Query {
-    playerLevels: [PlayerLevel]
+    playerLevel: [PlayerLevel]
 }
 
 extend type Mutation {
