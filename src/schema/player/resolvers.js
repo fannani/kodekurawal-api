@@ -22,7 +22,7 @@ const resolvers = {
       editedPlayer.avatar = avatar;
       return editedPlayer.save();
     },
-    addBadge: async(_,{id, badge}) => {
+    addBadgePlayer: async(_,{id, badge}) => {
       const player = await Player.findOneAndUpdate(
         { _id: id },
         { $addToSet: { badges: badge } },

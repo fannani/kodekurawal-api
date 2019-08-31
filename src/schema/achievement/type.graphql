@@ -1,3 +1,5 @@
+#import 'detail/type.graphql'
+
 type Achievement {
     id: ID!
     text: String!
