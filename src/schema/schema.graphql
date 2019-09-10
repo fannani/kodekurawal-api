@@ -5,6 +5,7 @@
 #import 'badge/type.graphql'
 #import 'achievement/type.graphql'
 #import 'course/type.graphql'
+#import 'leaderboard/type.graphql'
 
 type Query
 type Mutation
