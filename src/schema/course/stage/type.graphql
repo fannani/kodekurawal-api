@@ -32,6 +32,8 @@ type Stage {
     stars: [Boolean]
     imageid: String
     script: String
+    missions: [Mission]
+    course: Course
     updated_at: String!
 }
 
