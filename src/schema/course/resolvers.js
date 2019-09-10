@@ -15,7 +15,10 @@ const resolvers = {
     },
     leaderboard: async (course) => {
       let populated = await Course.findById(course._id);
+      let leaderboard = await populated.leaderboard();
+      console.log(leaderboard)
       return populated.leaderboard();
+
     },
   },
   Query: {
