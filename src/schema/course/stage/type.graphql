@@ -38,7 +38,7 @@ type Stage {
 }
 
 extend type Query {
-    stages: [Stage]
+    stages(_id: ID,course: ID,player: ID): [Stage]
 }
 
 extend type Mutation {

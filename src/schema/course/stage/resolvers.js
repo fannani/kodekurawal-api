@@ -1,5 +1,4 @@
 import { merge } from 'lodash'
-import User from "../../user/User";
 import Stage from "./Stage";
 import {storeFB} from "../../../utils/upload";
 import Course from "../../course/Course";
@@ -19,8 +18,17 @@ const resolvers = {
     }
   },
   Query: {
-    stages: (_, args) => {
-      return User.find(args)
+    stages: async (_, args) => {
+      if (args.player && args.course) {
+        let course = await Course.findById(args.course);
+        return course.player(args.player);
+      }
+      if (args.player) {
+        let stage = await Stage.findById(args._id);
+        let player = await stage.player(args.player);
+        return player;
+      }
+      return Stage.find(args);
     },
   },
   Mutation: {
