@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 		<div align="center">
 			___________________
 			<br/>
-			Welcome to KodeKurawal API 1.1.5
+			Welcome to KodeKurawal API 1.1.6
 			<br/>
 			______🚀😀🚀_____
 		</div>
