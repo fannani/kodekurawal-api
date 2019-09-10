@@ -2,7 +2,7 @@ import Player from "../player/Player";
 
 const resolvers = {
   Leaderboard : {
-    player : (_, {_id}) => {
+    player : ({_id}) => {
       return Player.findOne({ _id });
     }
   }
