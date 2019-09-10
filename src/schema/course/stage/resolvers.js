@@ -2,6 +2,7 @@ import { merge } from 'lodash'
 import Stage from "./Stage";
 import {storeFB} from "../../../utils/upload";
 import Course from "../../course/Course";
+import Mission from "./mission/Mission"
 import mission from './mission/resolvers'
 import score from './score/resolvers'
 
