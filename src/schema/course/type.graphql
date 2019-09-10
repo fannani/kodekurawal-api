@@ -11,7 +11,7 @@ type Course {
 }
 
 extend type Query {
-    courses: [Course]
+    courses(_id : ID): [Course]
 }
 
 extend type Mutation {
