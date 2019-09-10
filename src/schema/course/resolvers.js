@@ -5,14 +5,20 @@ import stage from './stage/resolvers';
 import {storeFB} from "../../utils/upload";
 
 const resolvers = {
+  Course : {
+    badge: async (course) => {
+      const populated = await Course.findById(course._id).populate('badge');
+      return populated.badge;
+    },
+    stages: (course) => {
+      return Stage.find({ course: course._id }).sort({ index: 1 });
+    },
+    leaderboard: async (course) => {
+      let populated = await Course.findById(course._id);
+      return populated.leaderboard();
+    },
+  },
   Query: {
-    stages: (_,{id}) => {
-      return Stage.find({ course: _id }).sort({ index: 1 });
-    },
-    leaderboard: async (_,{_id}) => {
-      let course = await Course.findById(_id);
-      return course.leaderboard();
-    },
     courses: (_, args) => {
       return Course.find(args, null, { sort: { index: 1 } });    },
   },
