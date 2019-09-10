@@ -1,0 +1,10 @@
+
+
+type Leaderboard {
+    _id: ID!
+    score: [Int]!
+    player: Player
+}
+
+
+

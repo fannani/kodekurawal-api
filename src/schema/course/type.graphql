@@ -8,6 +8,9 @@ type Course {
     desc: String!
     imageid: String
     updated_at: String!
+    badge: Badge
+    stages: [Stage]
+    leaderboard: [Leaderboard]
 }
 
 extend type Query {

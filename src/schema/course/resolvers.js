@@ -1,10 +1,18 @@
 import {merge} from 'lodash'
 import Course from "./Course";
+import Stage from "./stage/Stage";
 import stage from './stage/resolvers';
 import {storeFB} from "../../utils/upload";
 
 const resolvers = {
   Query: {
+    stages: (_,{id}) => {
+      return Stage.find({ course: _id }).sort({ index: 1 });
+    },
+    leaderboard: async (_,{_id}) => {
+      let course = await Course.findById(_id);
+      return course.leaderboard();
+    },
     courses: (_, args) => {
       return Course.find(args, null, { sort: { index: 1 } });    },
   },
