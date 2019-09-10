@@ -2,7 +2,7 @@
 
 type Leaderboard {
     _id: ID!
-    score: [Int]!
+    score: Int!
     player: Player
 }
 
