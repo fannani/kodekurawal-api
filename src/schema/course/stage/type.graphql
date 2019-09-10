@@ -1,5 +1,19 @@
 #import 'mission/type.graphql'
 #import 'score/type.graphql'
+enum StageType  {
+    PROGRAMMING
+    MATERIAL
+    QUIZ
+}
+
+type Question {
+    index : Int
+    content: String!
+    choice : [String]
+    answer : String
+    score : Int!
+}
+
 
 type Stage {
     _id: ID!
@@ -10,8 +24,10 @@ type Stage {
     time: Int
     win: Boolean
     score: Int
+    type: StageType
     badge_name: String
     badge_image: String
+    questions: [Question]
     language: String
     stars: [Boolean]
     imageid: String

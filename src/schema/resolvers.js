@@ -1,4 +1,3 @@
-
 import { merge } from 'lodash'
 import achievement from './achievement/resolvers'
 import avatar from './avatar/resolvers'
