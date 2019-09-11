@@ -9,8 +9,9 @@ import score from './score/resolvers'
 const resolvers = {
   Stage: {
     course: async ({_id}) => {
-      const missions = await Mission.find({ stage: _id });
-      return missions;
+      let stage = await Stage.findOne({ _id });
+      let course = await Course.findOne({ _id: stage.course });
+      return course;
     },
     missions: async({_id}) => {
       let stage = await Stage.findOne({ _id });
