@@ -1,6 +1,12 @@
 import Mission from "./Mission";
-
+import TestCaseMission from "./testcase/TestCaseMission";
 const resolvers = {
+  Mission: {
+    testcase: async ({_id}) => {
+      const testcase = await TestCaseMission.find({ mission: _id });
+      return testcase;
+    },
+  },
   Query: {
     missions: (_, args) => {
         return Mission.find(args)
