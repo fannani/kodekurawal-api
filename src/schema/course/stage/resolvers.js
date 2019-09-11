@@ -14,9 +14,8 @@ const resolvers = {
       return course;
     },
     missions: async({_id}) => {
-      let stage = await Stage.findOne({ _id });
-      let course = await Course.findOne({ _id: stage.course });
-      return course;
+      const missions = await Mission.find({ stage: _id });
+      return missions;
     }
   },
   Query: {
