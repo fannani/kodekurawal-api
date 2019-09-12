@@ -1,10 +1,11 @@
+import { merge } from 'lodash'
 import Mission from "./Mission";
 import TestCaseMission from "./testcase/TestCaseMission";
+import testcaseMission from "./testcase/resolvers"
 const resolvers = {
   Mission: {
-    testcase: async ({_id}) => {
-      const testcase = await TestCaseMission.find({ mission: _id });
-      return testcase;
+    testcase:  ({_id}) => {
+      return TestCaseMission.find({ mission: _id });
     },
   },
   Query: {
@@ -31,4 +32,4 @@ const resolvers = {
 
 };
 
-export default resolvers;
+export default merge(resolvers,testcaseMission);

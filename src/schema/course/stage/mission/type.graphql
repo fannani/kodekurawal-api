@@ -4,7 +4,7 @@ type Mission {
     _id: ID!
     quest: String!
     score: Int!
-    testcase: TestCaseMission
+    testcase: [TestCaseMission]
     updated_at: String!
 }
 
