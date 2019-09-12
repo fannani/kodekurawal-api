@@ -1,6 +1,14 @@
-import TestCaseMission from "TestCaseMission";
+import TestCaseMission from "./TestCaseMission";
+import TestCase from "../../../../testcase/TestCase";
 
 const resolvers = {
+  TestCaseMission : {
+    testcase : async ({ _id }) => {
+      const data = await TestCaseMission.findOne({ _id });
+      console.log(data);
+      return TestCase.findOne({ _id: data.testcase });
+    }
+  },
   Query: {
     testCaseMissions: (_, args) => {
         TestCaseMission.find(args)

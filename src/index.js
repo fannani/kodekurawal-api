@@ -68,5 +68,4 @@ app.use('/api', (req, res, next) => {
   })(req, res, next);
 });
 app.use(routes);
-
 server.listen(process.env.PORT);
