@@ -2,6 +2,7 @@ import mongoose, { Schema } from 'mongoose';
 import PlayerLevel from '../player/level/PlayerLevel'
 import Achievement from '../achievement/Achievement'
 import DetailAchievement from '../achievement/detail/DetailAchievement'
+import Score from '../course/stage/score/Score'
 import Course from "../course/Course"
 
 const PlayerAchievement = mongoose.model('PlayerAchievement')
