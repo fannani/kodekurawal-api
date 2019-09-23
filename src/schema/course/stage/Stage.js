@@ -13,6 +13,7 @@ const StageSchema = new mongoose.Schema({
   script: String,
   badge_image: String,
   language: String,
+  type : { type: String, enum : [' PROGRAMMING','MATERIAL','QUIZ'], default: 'PROGRAMMING' },
   updated_at: { type: Date, default: Date.now },
 });
 

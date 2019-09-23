@@ -1,0 +1,37 @@
+type Material {
+    id : ID!
+    stage : Stage
+    body : String
+    materialType : MaterialType
+    url : String
+}
+
+enum MaterialType {
+    PDF
+    WEB
+}
+
+input MaterialInput {
+    body: String
+    content: ID
+    materialType : MaterialType
+    url: String
+}
+
+input MaterialWhere {
+    id : ID
+    content : ID
+    body : String
+}
+
+extend type Query {
+    material(where: MaterialWhere!, css : Boolean = true) : Material
+    materials : [Material]
+}
+
+extend type Mutation {
+    createMaterial(input : MaterialInput!): Material
+    updateMaterial(where: MaterialWhere!, input: MaterialInput!): Material
+    upsertMaterial(id: ID!, data: MaterialInput!) : Material
+    deleteMaterial(id: ID!): Material
+}

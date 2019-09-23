@@ -6,15 +6,6 @@ enum StageType  {
     QUIZ
 }
 
-type Question {
-    index : Int
-    content: String!
-    choice : [String]
-    answer : String
-    score : Int!
-}
-
-
 type Stage {
     _id: ID!
     title: String!
@@ -27,7 +18,6 @@ type Stage {
     type: StageType
     badge_name: String
     badge_image: String
-    questions: [Question]
     language: String
     stars: [Boolean]
     imageid: String
