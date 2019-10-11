@@ -1,5 +1,5 @@
 type Material {
-    id : ID!
+    _id : ID!
     stage : Stage
     body : String
     materialType : MaterialType
@@ -13,15 +13,14 @@ enum MaterialType {
 
 input MaterialInput {
     body: String
-    content: ID
+    stage: ID
     materialType : MaterialType
     url: String
 }
 
 input MaterialWhere {
-    id : ID
-    content : ID
-    body : String
+    _id : ID
+    stage : ID
 }
 
 extend type Query {

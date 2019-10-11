@@ -24,7 +24,7 @@ const resolvers = {
       return Course.find(args, null, { sort: { index: 1 } });    },
   },
   Mutation: {
-    addCourse: async(_,args) => {
+    addCourse: async(_,{name , desc, script, file}) => {
       let id = '';
       if (file) {
         const { filename, createReadStream, mimetype } = await file;

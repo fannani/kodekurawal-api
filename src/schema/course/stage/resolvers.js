@@ -5,6 +5,9 @@ import Course from "../../course/Course";
 import Mission from "./mission/Mission"
 import mission from './mission/resolvers'
 import score from './score/resolvers'
+import material from './material/resolvers';
+import Material from './material/Material';
+import {Schema} from "mongoose";
 
 const resolvers = {
   Stage: {
@@ -33,7 +36,7 @@ const resolvers = {
     },
   },
   Mutation: {
-    addStage: async (_, {title, teory, time, course, index, exp_reward, script, language}) => {
+    addStage: async (_, {title, teory, time, course, index, exp_reward, script, language, type}) => {
       let stage = new Stage({
         title,
         teory,
@@ -42,6 +45,7 @@ const resolvers = {
         exp_reward,
         script,
         language,
+        type,
         // imageid : id
       });
       if (index) {
@@ -53,7 +57,15 @@ const resolvers = {
         if (tmp) stage.index = tmp.index + 1;
         else stage.index = 1;
       }
-      return stage.save();
+      await stage.save();
+      if(type === "MATERIAL"){
+        const material = new Material({
+          stage: stage._id,
+        })
+        await material.save();
+      }
+
+      return stage;
     },
 
     updateStage: async (_, args) => {
@@ -98,4 +110,4 @@ const resolvers = {
   }
 };
 
-export default merge(resolvers,mission,score);
+export default merge(resolvers,mission,score, material);

@@ -1,15 +1,13 @@
+import Material from './Material';
+import Stage from '../Stage';
 
 const resolvers = {
   Material: {
-    content: (material, __, { db }) => db.material({ id: material.id }).content(),
+    stage: (material, __, ) => Stage.findOne({ _id: material.stage }),
   },
   Query: {
-    material: async (_, { where, css }, { db }) => {
-      const materials = await db.materials({
-        where: {
-          content: { id: where.content },
-        },
-      });
+    material: async (_, { where, css }) => {
+      const materials = await Material.find({ stage : where.stage });
       if (css) {
         materials[0].body = `<div class="container">${materials[0].body}</div>`;
         materials[0].body += '<style>'
@@ -24,12 +22,19 @@ const resolvers = {
       }
       return materials[0];
     },
-    materials: (_, __, { db }) => db.materials(),
+    materials: (_, args, ) => Material.find(args),
   },
   Mutation: {
-    createMaterial: (_, { input }, { db }) => db.createMaterial(input),
-    updateMaterial: (_, { where, input }, { db }) => db.upsertMaterial({ update: input, where: { where }, create: input }),
-    upsertMaterial: (_, { id, data }, { db }) => {
+    createMaterial: (_, {input}) => {
+      const material = new Material(input);
+      return material.save();
+    },
+    updateMaterial: async (_, {where, input}) => {
+      const material = await Material.findOne({where});
+      material.set(input);
+      return material.save();
+    },
+    upsertMaterial: (_, {id, data}, {db}) => {
       const input = {
         url: data.url,
         materialType: data.materialType,
@@ -40,10 +45,10 @@ const resolvers = {
           },
         },
       };
-      return db.upsertMaterial({ update: input, where: { id }, create: input });
+      return db.upsertMaterial({update: input, where: {id}, create: input});
     },
-    deleteMaterial: (_, { id }, { db }) => db.deleteMaterial({ id }),
-  },
+    deleteMaterial: (_, {id}) => Material.findByIdAndRemove(id)
+  }
 };
 
 export default resolvers;
