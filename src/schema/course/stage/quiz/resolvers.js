@@ -1,20 +1,15 @@
-import { merge, shuffle } from 'lodash';
-
+import {  shuffle } from 'lodash';
+import Quiz from './Quiz';
+import Stage from '../Stage';
 const resolvers = {
-  Evaluation: {
-    content: (evaluation, __, { db }) => db.evaluation({ id: evaluation.id }).content(),
+  Quiz: {
+    stage: (quiz, __) => Stage.findOne({ _id: quiz.stage }),
   },
-  // TODO : Sections
   Query: {
-    evaluation: async (_, { where, random }, { db }) => {
-      const evaluations = await db.evaluations({
-        where: {
-          content: { id: where.content },
-        },
-      });
-      const evaluation = evaluations[0];
-      if (evaluation) {
-        const indexedQuestions = evaluation.questions.map((value, index) => {
+    quiz: async (_, { where, random }) => {
+      const quiz = Quiz.findOne(where);
+      if (quiz) {
+        const indexedQuestions = quiz.questions.map((value, index) => {
           value.index = index;
           return value;
         });
@@ -24,85 +19,33 @@ const resolvers = {
           const randomEssay = shuffle(essay);
           const randomChoice = shuffle(choice);
           const randomizeQuestions = randomChoice.concat(randomEssay);
-          evaluation.questions = randomizeQuestions;
+          quiz.questions = randomizeQuestions;
         } else {
-          evaluation.questions = indexedQuestions;
+          quiz.questions = indexedQuestions;
         }
       }
-      return evaluation;
+      return quiz;
     },
-    evaluations: (_, __, { db }) => db.evaluations(),
+    allQuiz: (_, __) => Quiz.find()
   },
   Mutation: {
-    createEvaluation: (_, { input }, { db }) => {
-      const data = {
-        time: input.time,
-        questions: {
-          create: [],
-        },
-      };
-      data.questions.create = input.questions.map((question) => ({
-        score: question.score,
-        question: {
-          create: {
-            content: question.question.content,
-            type: question.question.type,
-            choice: { set: question.question.choice },
-            answer: question.question.answer,
-          },
-        },
-      }));
-      return db.createEvaluation(data);
+    createQuiz: (_, { input }) => {
+      const quiz = new Quiz(input);
+      return quiz.save();
     },
-    upsertEvaluation: async (_, { id, data }, { db }) => {
-      const questionsData = data.questions.map((q) => ({
-        content: q.content,
-        type: q.type,
-        choice: { set: q.choice },
-        answer: q.answer,
-        score: q.score,
-      }));
-
-      const content = {
-        time: data.time,
-        contentId: data.content,
-        content: {
-          connect: {
-            id: data.content,
-          },
-        },
-        questions: {
-          create: questionsData,
-        },
-      };
-      const evaluationExists = await db.$exists.evaluation({ id });
-      if (evaluationExists) {
-        await db.updateEvaluation({
-          where: { id },
-          data: {
-            questions: {
-              deleteMany: [{ score_not: -99 }],
-            },
-          },
-        });
-      }
-      return db.upsertEvaluation({ where: { id }, update: content, create: content });
-    },
-    submitEvaluation: async (_, { input }, { db }) => {
+    submitQuiz: async (_, { input }) => {
       input.answer.sort((a, b) => (a.index - b.index));
-      const master = await db.evaluation({ id: input.evaluation });
+      const master = await Quiz.findOne({ _id: input.quiz });
       let essayLen = 0;
       let choiceLen = 0;
-      const questLen = master.questions.length;
-      for (let i = 0; i < questLen; ++i) {
-        const question = master.questions[i];
+      for (question of master.questions) {
         if (question.type === 'MULTIPLE_CHOICE') choiceLen++;
         if (question.type === 'ESSAY') essayLen++;
       }
       const essayScore = (50 / essayLen);
       const choiceScore = (50 / choiceLen);
       const len = input.answer.length;
-      let score = 0; //
+      let score = 0;
       for (let i = 0; i < len; ++i) {
         const question = master.questions[i];
         if (question.type === 'MULTIPLE_CHOICE' && question.answer === input.answer[i].answer) { score += choiceScore; }
@@ -117,17 +60,21 @@ const resolvers = {
         }
       }
       const answer = input.answer.map((val) => val.answer);
-      return db.createScore({
+      const scoreData = new Score({
         score: Math.ceil(score),
-        user: { connect: { id: input.user } },
-        evaluation: { connect: { id: input.evaluation } },
-        evaluationId: input.evaluation,
-        answer: { set: answer },
+        player:  input.user ,
+        stage : master.stage,
+        answer:  answer ,
       });
+      return scoreData.save();
     },
-    updateEvaluation: (_, { id, input }, { db }) => db.updateEvaluation({ data: input, where: { id } }),
-    deleteEvaluation: (_, { id }, { db }) => db.deleteEvaluation({ id }),
+    updateQuiz: (_, { id, input }) => Quiz.updateOne({_id : id}, input ),
+    deleteQuiz: async (_, { id }) => {
+      const quiz = await Quiz.findOne({ _id : id });
+      await Quiz.deleteOne({_id : id});
+      return quiz;
+    },
   },
 };
 
-export default merge(resolvers);
+export default resolvers;

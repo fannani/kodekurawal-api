@@ -8,6 +8,7 @@ const ScoreSchema = new Schema({
   time: Number,
   stars: [Boolean],
   script: String,
+  answer: [String],
   updated_at: { type: Date, default: Date.now },
 });
 

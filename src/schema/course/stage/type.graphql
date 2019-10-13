@@ -1,6 +1,7 @@
 #import 'mission/type.graphql'
 #import 'score/type.graphql'
 #import 'material/type.graphql'
+#import 'quiz/type.graphql'
 
 enum StageType  {
     PROGRAMMING

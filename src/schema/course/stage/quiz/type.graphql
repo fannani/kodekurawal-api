@@ -1,21 +1,20 @@
-type Evaluation {
-    id : ID!
-    questions: [QuestionEvaluation]
+type Quiz {
+    _id : ID!
+    title : String
+    questions: [Question]
+    time: Int
     stage : Stage
 }
+input QuizInput {
+    time: Int
+    title : String
+    questions: [QuestionInput]
+    stage: ID
+}
 
-type QuestionEvaluation {
-    evaluation: Evaluation
-    index : Int
-    question : Question
-}
-enum QuestionType {
-    MULTIPLE_CHOICE
-    ESSAY
-}
 input QuestionInput {
     content: String
-    type : QuestionType
+    questionType : QuestionType
     choice : [String]
     answer : String
     score : Int!
@@ -23,25 +22,22 @@ input QuestionInput {
 
 type Question {
     content: String!
-    type : QuestionType!
+    questionType : QuestionType!
     choice : [String]
     answer : String
     score : Int!
 }
 
-input QuestionDetailInput {
-    question : QuestionInput
-    score : Int
+enum QuestionType {
+    MULTIPLE_CHOICE
+    ESSAY
 }
 
-input EvaluationInput {
-    time: Int
-    questions: [QuestionInput]
-    content: ID
-}
-input EvaluationWhere {
+
+
+input QuizWhere {
     id: ID
-    content: ID
+    stage: ID
 }
 
 input AnswerInput {
@@ -49,24 +45,24 @@ input AnswerInput {
     answer : String,
 }
 
-input EvaluationSubmitInput {
+input QuizSubmitInput {
     time: Int
-    evaluation: ID
-    user: ID
+    quiz: ID
+    player: ID
     answer: [AnswerInput]
 
 }
 
 extend type Query {
-    evaluation(where: EvaluationWhere!, random: Boolean = false) : Evaluation @auth(requires: [USER,ADMIN])
-    evaluations: [Evaluation] @auth(requires: [USER,ADMIN])
+    quiz(where: QuizWhere!, random: Boolean = false) : Quiz
+    allQuiz: [Quiz]
 }
 
 
 extend type Mutation {
-    createEvaluation(input : EvaluationInput!): Evaluation @auth(requires: [ADMIN])
-    upsertEvaluation(id: ID!, data: EvaluationInput!) : Evaluation @auth(requires: [ADMIN])
-    updateEvaluation(id: ID!, input : EvaluationInput!): Evaluation @auth(requires: [ADMIN])
-    deleteEvaluation(id : ID!): Evaluation @auth(requires: [ADMIN])
-    submitEvaluation(input : EvaluationSubmitInput!): Score @auth(requires: [USER,ADMIN])
+    createQuiz(input : QuizInput!): Quiz
+    upsertQuiz(id: ID!, data: QuizInput!) : Quiz
+    updateQuiz(id: ID!, input : QuizInput!): Quiz
+    deleteQuiz(id : ID!): Quiz
+    submitQuiz(input : QuizSubmitInput!): Score
 }

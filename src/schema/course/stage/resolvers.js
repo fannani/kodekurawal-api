@@ -6,6 +6,7 @@ import Mission from "./mission/Mission"
 import mission from './mission/resolvers'
 import score from './score/resolvers'
 import material from './material/resolvers';
+import quiz from './quiz/resolvers';
 import Material from './material/Material';
 import {Schema} from "mongoose";
 
@@ -110,4 +111,4 @@ const resolvers = {
   }
 };
 
-export default merge(resolvers,mission,score, material);
+export default merge(resolvers,mission,score, material, quiz);
