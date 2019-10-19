@@ -30,7 +30,8 @@ const resolvers = {
       return material.save();
     },
     updateMaterial: async (_, {where, input}) => {
-      const material = await Material.findOne({where});
+      const material = await Material.findById(where._id);
+	  console.log(material);
       material.set(input);
       return material.save();
     },

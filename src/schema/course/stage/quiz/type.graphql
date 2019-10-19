@@ -21,8 +21,8 @@ input QuestionInput {
 }
 
 type Question {
-    content: String!
-    questionType : QuestionType!
+    content: String
+    questionType : QuestionType
     choice : [String]
     answer : String
     score : Int!

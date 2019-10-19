@@ -8,6 +8,7 @@ import score from './score/resolvers'
 import material from './material/resolvers';
 import quiz from './quiz/resolvers';
 import Material from './material/Material';
+import Quiz from './quiz/Quiz';
 import {Schema} from "mongoose";
 
 const resolvers = {
@@ -65,6 +66,12 @@ const resolvers = {
         })
         await material.save();
       }
+	  if(type === "QUIZ"){
+		const quiz = new Quiz({
+		  stage: stage._id,
+		})
+		await quiz.save();
+	  }
 
       return stage;
     },
