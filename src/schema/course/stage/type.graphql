@@ -1,19 +1,13 @@
 #import 'mission/type.graphql'
 #import 'score/type.graphql'
+#import 'material/type.graphql'
+#import 'quiz/type.graphql'
+
 enum StageType  {
     PROGRAMMING
     MATERIAL
     QUIZ
 }
-
-type Question {
-    index : Int
-    content: String!
-    choice : [String]
-    answer : String
-    score : Int!
-}
-
 
 type Stage {
     _id: ID!
@@ -27,7 +21,6 @@ type Stage {
     type: StageType
     badge_name: String
     badge_image: String
-    questions: [Question]
     language: String
     stars: [Boolean]
     imageid: String
@@ -42,8 +35,8 @@ extend type Query {
 }
 
 extend type Mutation {
-    addStage(title:String!, teory:String, time:String,index:Int, index:Int,exp_reward: Int,course:ID!,language:String ):Stage
-    updateStage(id:ID!,title:String,teory:String,index:Int,time:Int,exp_reward:Int,course:ID!,file:Upload,script:String,language:String):Stage
+    addStage(title:String!, teory:String, time:Int,index:Int, index:Int,exp_reward: Int,course:ID!,language:String, type:StageType):Stage
+    updateStage(id:ID!,title:String,teory:String,index:Int,time:Int,exp_reward:Int,course:ID,file:Upload,script:String,language:String):Stage
     deleteStage(id:ID!):Stage
     reorderStage(courseid:ID,source:ID, destination:Int):Course
 }
