@@ -14,3 +14,7 @@ type User {
 extend type Query {
     users(_id : ID): [User]
 }
+
+extend type Mutation {
+    registerUser(name:String!,email:String!,password:String!,role: String!):User
+}
