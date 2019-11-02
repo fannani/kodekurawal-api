@@ -21,6 +21,10 @@ const resolvers = {
     missions: async({_id}) => {
       const missions = await Mission.find({ stage: _id });
       return missions;
+    },
+    quiz: async({_id}) => {
+      const quiz = await Quiz.findOne({stage : _id});
+      return quiz;
     }
   },
   Query: {
