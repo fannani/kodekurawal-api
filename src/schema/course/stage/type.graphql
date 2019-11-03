@@ -27,6 +27,7 @@ type Stage {
     script: String
     missions: [Mission]
 	  quiz: Quiz
+    material: Material
     course: Course
     updated_at: String!
 }

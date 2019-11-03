@@ -25,6 +25,10 @@ const resolvers = {
     quiz: async({_id}) => {
       const quiz = await Quiz.findOne({stage : _id});
       return quiz;
+    },
+    material: async({_id}) => {
+      const material = await Material.findOne({stage: _id});
+      return material;
     }
   },
   Query: {

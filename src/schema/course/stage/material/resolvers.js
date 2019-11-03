@@ -22,7 +22,7 @@ const resolvers = {
       }
       return materials[0];
     },
-    materials: (_, args, ) => Material.find(args),
+    materials: (_, args ) => Material.find(args),
   },
   Mutation: {
     createMaterial: (_, {input}) => {
@@ -31,7 +31,6 @@ const resolvers = {
     },
     updateMaterial: async (_, {where, input}) => {
       const material = await Material.findById(where._id);
-	  console.log(material);
       material.set(input);
       return material.save();
     },
