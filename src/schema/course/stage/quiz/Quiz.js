@@ -4,6 +4,7 @@ import mongoose, { Schema } from 'mongoose';
 const QuizSchema = new mongoose.Schema({
   title: String,
   stage: { type: Schema.Types.ObjectId },
+  time: Number,
   questions: [{
     content: String,
     questionType: String,
