@@ -1,7 +1,6 @@
 #import 'detail/type.graphql'
 
 type Achievement {
-    id: ID!
     text: String!
     _id: ID!
     title: String!
@@ -10,11 +9,12 @@ type Achievement {
     star: Int
     target_point: Int
     point: Int
+	  detail: [AchievementDetail]
     updated_at: String!
 }
 
 extend type Query {
-    achievements: [Achievement]
+    achievements(_id: ID): [Achievement]
 
 }
 

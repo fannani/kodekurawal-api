@@ -1,9 +1,15 @@
 import { merge } from 'lodash'
 import Achievement from "./Achievement";
+import DetailAchievement from "./detail/DetailAchievement";
 import detailAchievement from './detail/resolvers'
 import {storeFB} from "../../utils/upload";
 
 const resolvers = {
+  Achievement: {
+	detail: async ({ _id }) => {
+      return DetailAchievement.find({ achievement: _id });
+    },
+  },
   Query: {
     achievements: async (_, args) => {
       if (args.player) {
