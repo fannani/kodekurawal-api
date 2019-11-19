@@ -7,5 +7,6 @@ import player from './player/resolvers'
 import testcase from './testcase/resolvers'
 import user from './user/resolvers'
 import file from './file/resolvers'
+import leaderboard from './leaderboard/resolvers'
 
-export default merge( achievement, avatar, badge, course,player, testcase, user, file)
+export default merge( achievement, avatar, badge, course,player, testcase, user, file, leaderboard)
