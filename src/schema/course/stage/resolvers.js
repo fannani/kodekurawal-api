@@ -85,18 +85,18 @@ const resolvers = {
     },
 
     updateStage: async (_, args) => {
-      let id = '';
+
+      const editstage = await Stage.findById(args.id);
       if (args.file) {
         const {filename, createReadStream} = await args.file;
         const stream = createReadStream();
         const filestore = await storeFB({stream, filename});
-        id = filestore.id;
+        editstage.imageid = filestore.id;
       }
-      const editstage = await Stage.findById(args.id);
       delete args.id;
       delete args.file;
       editstage.set(args);
-      editstage.imageid = id;
+
       return editstage.save();
     },
     deleteStage: async (_, args) => {
