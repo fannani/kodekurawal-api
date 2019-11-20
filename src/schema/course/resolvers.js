@@ -38,8 +38,16 @@ const resolvers = {
     },
     updateCourse: async(_,args) => {
       const edit = await Course.findById(args.id);
+      if (file) {
+        const { filename, createReadStream, mimetype } = await args.file;
+        const stream = createReadStream();
+        const filestore = await storeFB({ stream, filename, mimetype });
+        edit.imageid = filestore.id;
+      }
       delete args.id;
+      delete args.file;
       edit.set(args);
+
       return edit.save();
     },
     deleteCourse: async(_,args) => {

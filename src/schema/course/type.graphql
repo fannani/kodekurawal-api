@@ -19,7 +19,7 @@ extend type Query {
 
 extend type Mutation {
     addCourse(name : String!, desc: String!, script: String, file: Upload):Course
-    updateCourse(id : ID!, name: String, desc: String, script:String):Course
+    updateCourse(id : ID!, name: String, desc: String, script:String, file: Upload):Course
     deleteCourse(id: ID!):Course
     uploadImage(courseid: ID, file: Upload):String
 }
