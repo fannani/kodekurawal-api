@@ -38,7 +38,7 @@ const resolvers = {
     },
     updateCourse: async(_,args) => {
       const edit = await Course.findById(args.id);
-      if (file) {
+      if (args.file) {
         const { filename, createReadStream, mimetype } = await args.file;
         const stream = createReadStream();
         const filestore = await storeFB({ stream, filename, mimetype });
