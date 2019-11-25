@@ -27,7 +27,6 @@ CourseSchema.methods.leaderboard = async function() {
     },
     { $group: { _id: '$player', score: { $sum: '$score' } } },
     { $sort: { score: -1 } },
-    { $limit: 10 },
   ]);
   return score;
 };
