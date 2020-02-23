@@ -1,14 +1,14 @@
 import { merge } from 'lodash'
-import Stage from "./Stage";
+import Stage from "../../../models/Stage";
 import {storeFB} from "../../../utils/upload";
-import Course from "../../course/Course";
-import Mission from "./mission/Mission"
+import Course from "../../../models/Course";
+import Mission from "../../../models/Mission"
 import mission from './mission/resolvers'
 import score from './score/resolvers'
 import material from './material/resolvers';
 import quiz from './quiz/resolvers';
-import Material from './material/Material';
-import Quiz from './quiz/Quiz';
+import Material from '../../../models/Material';
+import Quiz from '../../../models/Quiz';
 import {Schema} from "mongoose";
 
 const resolvers = {

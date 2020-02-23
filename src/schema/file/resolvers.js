@@ -1,5 +1,5 @@
 import { storeFB } from '../../utils/upload';
-import File from './File';
+import File from '../../models/File';
 
 
 const resolvers = {

@@ -1,5 +1,5 @@
-import Material from './Material';
-import Stage from '../Stage';
+import Material from '../../../../models/Material';
+import Stage from '../../../../models/Stage';
 
 const resolvers = {
   Material: {

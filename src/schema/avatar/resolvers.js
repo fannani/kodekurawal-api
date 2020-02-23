@@ -1,4 +1,4 @@
-import Avatar from "./Avatar";
+import Avatar from "../../models/Avatar";
 import {storeFB} from "../../utils/upload";
 
 const resolvers = {

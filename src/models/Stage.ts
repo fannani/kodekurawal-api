@@ -1,5 +1,7 @@
+// @ts-nocheck
 import mongoose, { Schema } from 'mongoose';
-const Score = mongoose.model("Score");
+
+const Score = mongoose.model('Score');
 
 const StageSchema = new mongoose.Schema({
   title: String,
@@ -13,7 +15,11 @@ const StageSchema = new mongoose.Schema({
   script: String,
   badge_image: String,
   language: String,
-  type : { type: String, enum : ['PROGRAMMING','MATERIAL','QUIZ'], default: 'PROGRAMMING' },
+  type: {
+    type: String,
+    enum: ['PROGRAMMING', 'MATERIAL', 'QUIZ'],
+    default: 'PROGRAMMING',
+  },
   updated_at: { type: Date, default: Date.now },
 });
 

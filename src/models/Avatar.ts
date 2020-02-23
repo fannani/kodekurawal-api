@@ -8,9 +8,11 @@ const AvatarSchema = new Schema({
 });
 AvatarSchema.virtual('unlock')
   .get(function() {
+    // @ts-ignore
     return this._unlock;
   })
-  .set(function(v) {
+  .set(function(v: any) {
+    // @ts-ignore
     this._unlock = v;
   });
 

@@ -1,7 +1,7 @@
-import Score from "../../../course/stage/score/Score";
-import Stage from "../Stage";
-import Course from "../../Course";
-import Player from "../../../player/Player"
+import Score from "../../../../models/Score";
+import Stage from "../../../../models/Stage";
+import Course from "../../../../models/Course";
+import Player from "../../../../models/Player"
 
 const resolvers = {
   Score: {

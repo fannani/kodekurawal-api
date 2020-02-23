@@ -3,6 +3,7 @@ import {
   GraphQLScalarType,
   GraphQLScalarTypeConfig,
 } from 'graphql';
+import { Context } from '../utils/context';
 
 export type Maybe<T> = T | null;
 export type RequireFields<T, K extends keyof T> = {
@@ -196,7 +197,7 @@ export type ResolversParentTypes = {
 };
 
 export type MutationResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']
 > = {
   signUp?: Resolver<
@@ -214,7 +215,7 @@ export type MutationResolvers<
 };
 
 export type QueryResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
 > = {
   users?: Resolver<
@@ -231,7 +232,7 @@ export interface UploadScalarConfig
 }
 
 export type UserResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']
 > = {
   _id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
@@ -251,7 +252,7 @@ export type UserResolvers<
   __isTypeOf?: isTypeOfResolverFn<ParentType>;
 };
 
-export type Resolvers<ContextType = any> = {
+export type Resolvers<ContextType = Context> = {
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   Upload?: GraphQLScalarType;
@@ -262,4 +263,4 @@ export type Resolvers<ContextType = any> = {
  * @deprecated
  * Use "Resolvers" root object instead. If you wish to get "IResolvers", add "typesPrefix: I" to your config.
  */
-export type IResolvers<ContextType = any> = Resolvers<ContextType>;
+export type IResolvers<ContextType = Context> = Resolvers<ContextType>;

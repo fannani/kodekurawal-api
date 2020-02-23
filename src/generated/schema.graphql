@@ -1,0 +1,37 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Mutation {
+  signIn(email: String!, password: String!): User
+  signUp(email: String!, name: String!, password: String!, role: String!): User
+}
+
+type Query {
+  users(_id: ID): [User]
+}
+
+type User {
+  _id: ID!
+  city: String
+  email: String!
+  last_login: String
+  name: String!
+  password: String!
+  province: String
+  role: String!
+  updated_at: String!
+  userdetailid: String!
+}
+
+enum CacheControlScope {
+  PRIVATE
+  PUBLIC
+}
+
+
+"The `Upload` scalar type represents a file upload."
+scalar Upload

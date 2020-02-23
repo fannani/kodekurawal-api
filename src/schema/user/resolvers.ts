@@ -1,4 +1,4 @@
-import { UserInputError } from 'apollo-server-errors';
+import { AuthenticationError, UserInputError } from 'apollo-server-errors';
 import { Resolvers } from '../../generated/graphql';
 
 const resolvers: Resolvers = {
@@ -8,11 +8,19 @@ const resolvers: Resolvers = {
     },
   },
   Mutation: {
-    signIn: async (parent, args, context) => {
-
+    signIn: async (parent, { email, password }, { models }) => {
+      const user = await models.user.findOne({ email });
+      if (!user) {
+        throw new AuthenticationError("Email doesn't exists");
+      }
+      if (!user.verifyPassword(password)) {
+        throw new AuthenticationError('Password is incorrect');
+      }
+      return user;
     },
     signUp: async (parent, args, { models }) => {
       const exist = await models.user.find({ email: args.email });
+      console.log(exist);
       if (exist.length <= 0) {
         return models.user.create({
           name: args.name,

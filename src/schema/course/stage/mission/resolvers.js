@@ -1,6 +1,6 @@
 import { merge } from 'lodash'
-import Mission from "./Mission";
-import TestCaseMission from "./testcase/TestCaseMission";
+import Mission from "../../../../models/Mission";
+import TestCaseMission from "../../../../models/TestCaseMission";
 import testcaseMission from "./testcase/resolvers"
 const resolvers = {
   Mission: {

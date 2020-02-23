@@ -1,6 +1,6 @@
 import {  shuffle } from 'lodash';
-import Quiz from './Quiz';
-import Stage from '../Stage';
+import Quiz from '../../../../models/Quiz';
+import Stage from '../../../../models/Stage';
 const resolvers = {
   Quiz: {
     stage: (quiz, __) => Stage.findOne({ _id: quiz.stage }),
@@ -8,7 +8,7 @@ const resolvers = {
   Query: {
     quiz: async (_, { where, random }) => {
       const quiz = await Quiz.findOne(where);
-	
+
       if (quiz) {
         const indexedQuestions = quiz.questions.map((value, index) => {
           value.index = index;

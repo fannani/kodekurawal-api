@@ -1,10 +1,10 @@
 import { merge } from 'lodash';
 import TestCase from '../../models/TestCase';
 import User from "../../models/User"
-import Player from "../player/Player"
-import Avatar from "../avatar/Avatar"
-import Achievement from "../achievement/Achievement"
-import Score from "../course/stage/score/Score"
+import Player from "../../models/Player"
+import Avatar from "../../models/Avatar"
+import Achievement from "../../models/Achievement"
+import Score from "../../models/Score"
 
 const resolvers = {
   Player : {

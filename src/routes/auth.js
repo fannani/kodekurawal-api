@@ -1,7 +1,7 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import passport from 'passport';
-import Player from '../schema/player/Player';
+import Player from '../models/Player';
 
 const router = express.Router();
 

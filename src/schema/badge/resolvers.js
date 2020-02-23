@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
-import Badge from "./Badge";
+import Badge from "../../models/Badge";
 import {storeFB} from "../../utils/upload";
-import Course from "../course/Course";
+import Course from "../../models/Course";
 
 const resolvers = {
   Query: {

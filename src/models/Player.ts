@@ -1,11 +1,12 @@
+// @ts-nocheck
 import mongoose, { Schema } from 'mongoose';
-import PlayerLevel from '../player/level/PlayerLevel'
-import Achievement from '../achievement/Achievement'
-import DetailAchievement from '../achievement/detail/DetailAchievement'
-import Score from '../course/stage/score/Score'
-import Course from "../course/Course"
+import PlayerLevel from './PlayerLevel';
+import Achievement from './Achievement';
+import DetailAchievement from './DetailAchievement';
+import Score from './Score';
+import Course from './Course';
 
-const PlayerAchievement = mongoose.model('PlayerAchievement')
+const PlayerAchievement = mongoose.model('PlayerAchievement');
 
 const PlayerSchema = new Schema({
   energy: { type: Number, default: 0 },
@@ -53,8 +54,8 @@ PlayerSchema.methods.totalAchievement = async function() {
   return achiev[0].total;
 };
 
-PlayerSchema.methods.resetAchievement = async function(achievement) {
-  const playerAchiev = await PlayerAchievement.findOne({
+PlayerSchema.methods.resetAchievement = async function(achievement: any) {
+  const playerAchiev: any = await PlayerAchievement.findOne({
     player: this._id,
     achievement,
   });
@@ -63,7 +64,7 @@ PlayerSchema.methods.resetAchievement = async function(achievement) {
   return playerAchiev.save();
 };
 
-PlayerSchema.methods.giveAchievement = async function(achievement) {
+PlayerSchema.methods.giveAchievement = async function(achievement: any) {
   const playerAchiev = await PlayerAchievement.findOne({
     player: this._id,
     achievement,
@@ -77,7 +78,7 @@ PlayerSchema.methods.giveAchievement = async function(achievement) {
       star: playerAchiev.star + 1,
     });
     if (playerAchiev.point < detail.target_point - 1) {
-      playerAchiev.point += 1; //TODO: Fixing if target 1
+      playerAchiev.point += 1; // TODO: Fixing if target 1
     } else if (playerAchiev.star < allDetail.length) {
       playerAchiev.star += 1;
       if (!achiev.continuous) {
@@ -145,11 +146,11 @@ PlayerSchema.methods.getCourse = async function() {
       },
     },
   ]);
-  let temp = [];
+  const temp = [];
   for (let i = 0; i < score.length; i++) {
     temp.push(score[i]._id);
   }
-  let courses = await Course.find({
+  const courses = await Course.find({
     _id: { $in: temp },
   });
   return courses;

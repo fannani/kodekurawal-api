@@ -1,4 +1,4 @@
-import Player from "../player/Player";
+import Player from "../../models/Player";
 
 const resolvers = {
   Leaderboard : {

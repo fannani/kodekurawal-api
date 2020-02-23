@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
-import Score from '../course/stage/score/Score'
-import Stage from '../course/stage/Stage'
+import Score from './Score';
+import Stage from './Stage';
 
 const CourseSchema = new mongoose.Schema({
   index: { type: Number, default: 1 },
@@ -31,10 +31,11 @@ CourseSchema.methods.leaderboard = async function() {
   return score;
 };
 
-CourseSchema.methods.player = async function(player) {
-  let stage = await Stage.find({ course: this._id }).sort({ index: 1 });
+CourseSchema.methods.player = async function(player: any) {
+  const stage: any = await Stage.find({ course: this._id }).sort({ index: 1 });
   for (let i = 0; i < stage.length; i += 1) {
     let win = false;
+    // eslint-disable-next-line no-await-in-loop
     const score = await Score.aggregate([
       {
         $match: {

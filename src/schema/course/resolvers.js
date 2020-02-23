@@ -1,6 +1,6 @@
 import {merge} from 'lodash'
-import Course from "./Course";
-import Stage from "./stage/Stage";
+import Course from "../../models/Course";
+import Stage from "../../models/Stage";
 import stage from './stage/resolvers';
 import {storeFB} from "../../utils/upload";
 

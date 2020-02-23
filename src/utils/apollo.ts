@@ -13,4 +13,14 @@ const apollo = new ApolloServer({
   },
 });
 
+export const testingServer = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context,
+  uploads: {
+    maxFileSize: 20000000, // 20 MB
+    maxFiles: 20,
+  },
+});
+
 export default apollo;

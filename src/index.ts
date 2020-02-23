@@ -14,8 +14,9 @@ admin.initializeApp({
   storageBucket: 'kodekurawal-ab777.appspot.com',
 });
 dotenv.config({ path: path.join(__dirname, '../.env') });
-const { ObjectId } = mongoose.Types;
 
+// SETUP MONGOOSE ORM
+const { ObjectId } = mongoose.Types;
 mongoose.connect(process.env.DB_HOST as string, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -29,6 +30,7 @@ ObjectId.prototype.valueOf = function() {
 const db = mongoose.connection;
 db.once('open', () => console.log('connected to the database'));
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+// END SETUP MONGOOSE
 
 const app = express();
 

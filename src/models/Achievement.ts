@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
-import DetailAchievement from '../achievement/detail/DetailAchievement'
-import PlayerAchievement from '../player/achievement/PlayerAchievement'
+import DetailAchievement from './DetailAchievement';
+import PlayerAchievement from './PlayerAchievement';
 
 const AchievementSchema = new Schema({
   title: String,
@@ -11,42 +11,50 @@ const AchievementSchema = new Schema({
 
 AchievementSchema.virtual('caption')
   .get(function() {
+    // @ts-ignore
     return this._caption;
   })
-  .set(function(v) {
+  .set(function(v: any) {
+    // @ts-ignore
     this._caption = v;
   });
 
 AchievementSchema.virtual('star')
   .get(function() {
+    // @ts-ignore
     return this._star;
   })
-  .set(function(v) {
+  .set(function(v: string) {
+    // @ts-ignore
     this._star = v;
   });
 
 AchievementSchema.virtual('target_point')
   .get(function() {
+    // @ts-ignore
     return this._target_point;
   })
-  .set(function(v) {
+  .set(function(v: any) {
+    // @ts-ignore
     this._target_point = v;
   });
 
 AchievementSchema.virtual('point')
   .get(function() {
+    // @ts-ignore
     return this._point;
   })
-  .set(function(v) {
+  .set(function(v: any) {
+    // @ts-ignore
     this._point = v;
   });
 
-AchievementSchema.methods.player = async function(player) {
-  const achiev = await PlayerAchievement.findOne({
+AchievementSchema.methods.player = async function(player: any) {
+  const achiev: any = await PlayerAchievement.findOne({
     achievement: this._id,
     player,
   });
-  let detail;
+  let detail: any;
   if (achiev) {
     detail = await DetailAchievement.findOne({
       achievement: this._id,
