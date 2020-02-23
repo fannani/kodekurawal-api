@@ -1,0 +1,15 @@
+{
+  "name": "Kodekurawal GraphQL Schema",
+  "schemaPath": "./generated/schema.json",
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "http://localhost:4000/api",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": false
+      }
+    }
+  }
+}

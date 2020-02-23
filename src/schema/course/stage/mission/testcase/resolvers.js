@@ -1,5 +1,5 @@
 import TestCaseMission from "./TestCaseMission";
-import TestCase from "../../../../testcase/TestCase";
+import TestCase from "../../../../../models/TestCase";
 
 const resolvers = {
   TestCaseMission : {

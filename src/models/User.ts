@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
   email: String,
   role: String,
   hash: String,
@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
   updated_at: { type: Date, default: Date.now },
 });
 
-UserSchema.methods.verifyPassword = function(password) {
+UserSchema.methods.verifyPassword = function(password: string) {
   return this.password === password;
   // const hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
   // return this.hash === hash;

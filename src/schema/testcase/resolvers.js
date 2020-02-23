@@ -1,6 +1,6 @@
 import { merge } from 'lodash';
-import TestCase from './TestCase';
-import User from "../user/User"
+import TestCase from '../../models/TestCase';
+import User from "../../models/User"
 import Player from "../player/Player"
 import Avatar from "../avatar/Avatar"
 import Achievement from "../achievement/Achievement"

@@ -4,7 +4,7 @@ import playerAchievement from './achievement/resolvers'
 import playerLevel from './level/resolvers'
 
 import Player from "./Player"
-import User from "../user/User"
+import User from "../../models/User"
 import Score from "../course/stage/score/Score"
 import {UserInputError} from "apollo-server-errors";
 

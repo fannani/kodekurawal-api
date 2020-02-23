@@ -1,20 +1,12 @@
-import "core-js/stable";
-import "regenerator-runtime/runtime";
-
 import express from 'express';
-import http from 'http';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import { ApolloServer } from 'apollo-server-express';
 import path from 'path';
-import passport from 'passport';
 import mongoose from 'mongoose';
-import routes from './routes';
-import typeDefs from './schema/schema.graphql';
-import resolvers from './schema/resolvers';
-import './config/passport';
 import * as admin from 'firebase-admin';
+import apollo from './utils/apollo';
+
 const serviceAccount = require('../firebasekey.json');
 
 admin.initializeApp({
@@ -24,10 +16,11 @@ admin.initializeApp({
 dotenv.config({ path: path.join(__dirname, '../.env') });
 const { ObjectId } = mongoose.Types;
 
-mongoose.connect(
-  process.env.DB_HOST,
-  { useNewUrlParser: true },
-);
+mongoose.connect(process.env.DB_HOST as string, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 mongoose.Promise = global.Promise;
 ObjectId.prototype.valueOf = function() {
   return this.toString();
@@ -38,34 +31,17 @@ db.once('open', () => console.log('connected to the database'));
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const app = express();
-const server = http.createServer(app);
-const apollo = new ApolloServer({
-  typeDefs ,
-  resolvers,
-  context: ({ req }) => ({
-    user: req.user,
-  }),
-  uploads: {
-    maxFileSize: 10000000, // 10 MB
-    maxFiles: 20,
-  },
-});
 
-app.use(cors())
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(passport.initialize());
+
 apollo.applyMiddleware({
   app,
   path: '/api',
 });
-app.use('/api', (req, res, next) => {
-  passport.authenticate('jwt', { session: false }, (err, user, info) => {
-    if (user) {
-      req.user = user;
-    }
-    next();
-  })(req, res, next);
+
+app.get('/', (req, res) => {
+  res.send('Kodekurawal Api');
 });
-app.use(routes);
-server.listen(process.env.PORT);
+app.listen(process.env.PORT);
