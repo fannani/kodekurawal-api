@@ -44,6 +44,14 @@ apollo.applyMiddleware({
 });
 
 app.get('/', (req, res) => {
-  res.send('Kodekurawal Api');
+  res.send(`
+		<div align="center">
+			___________________
+			<br/>
+			Welcome to KodeKurawal API 1.3.1-beta
+			<br/>
+			______🚀😀🚀_____
+		</div>
+	`);
 });
 app.listen(process.env.PORT);

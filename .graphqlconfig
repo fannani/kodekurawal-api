@@ -1,6 +1,7 @@
 {
   "name": "Kodekurawal GraphQL Schema",
   "schemaPath": "./src/generated/schema.graphql",
+  "includes": ["./src/schema/**/*.test.ts"],
   "extensions": {
     "endpoints": {
       "Default GraphQL Endpoint": {

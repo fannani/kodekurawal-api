@@ -1,7 +1,7 @@
 import {merge} from 'lodash'
 import mongoose from 'mongoose'
-import playerAchievement from './achievement/resolvers'
-import playerLevel from './level/resolvers'
+import playerAchievement from '../playerAchievement/resolvers'
+import playerLevel from '../playerLevel/resolvers'
 
 import Player from "../../models/Player"
 import User from "../../models/User"

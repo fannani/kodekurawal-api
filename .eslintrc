@@ -26,6 +26,7 @@
         "import/extensions": "off",
         "prettier/prettier": "error",
         "no-unused-vars": "off",
+        "no-plusplus": "off",
         "camelcase": "off",
         "no-underscore-dangle": "off",
         "import/prefer-default-export": "off",

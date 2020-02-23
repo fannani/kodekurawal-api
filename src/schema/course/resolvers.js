@@ -1,7 +1,7 @@
 import {merge} from 'lodash'
 import Course from "../../models/Course";
 import Stage from "../../models/Stage";
-import stage from './stage/resolvers';
+import stage from '../stage/resolvers';
 import {storeFB} from "../../utils/upload";
 
 const resolvers = {

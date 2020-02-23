@@ -1,7 +1,7 @@
 import { merge } from 'lodash'
 import Achievement from "../../models/Achievement";
 import DetailAchievement from "../../models/DetailAchievement";
-import detailAchievement from './detail/resolvers'
+import detailAchievement from '../achievementDetail/resolvers'
 import {storeFB} from "../../utils/upload";
 
 const resolvers = {

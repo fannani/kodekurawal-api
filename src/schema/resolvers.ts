@@ -4,8 +4,12 @@
 // import course from './course/resolvers'
 // import player from './player/resolvers'
 // import testcase from './testcase/resolvers'
-import user from './user/resolvers'
+import user from './user/resolvers';
+import testcase from './testcase/resolvers';
 // import file from './file/resolvers'
 // import leaderboard from './leaderboard/resolvers'
 
-export default Object.assign( /* achievement, avatar, badge, course,player, testcase,*/ user/*, file, leaderboard*/);
+export default Object.assign(
+  /* achievement, avatar, badge, course,player, */ testcase,
+  user /* , file, leaderboard */
+);
