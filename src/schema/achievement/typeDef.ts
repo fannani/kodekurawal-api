@@ -15,7 +15,7 @@ export default gql`
   }
 
   extend type Query {
-    achievements(_id: ID): [Achievement]
+    achievements(_id: ID, player: ID): [Achievement]
   }
 
   extend type Mutation {

@@ -1,5 +1,5 @@
 import { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
-import { Context } from './utils/context';
+import { Context } from '../utils/context';
 export type Maybe<T> = T | null;
 export type RequireFields<T, K extends keyof T> = { [X in Exclude<keyof T, K>]?: T[X] } & { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
@@ -564,7 +564,8 @@ export type QueryMaterialArgs = {
 
 
 export type QueryAchievementsArgs = {
-  _id?: Maybe<Scalars['ID']>
+  _id?: Maybe<Scalars['ID']>,
+  player?: Maybe<Scalars['ID']>
 };
 
 

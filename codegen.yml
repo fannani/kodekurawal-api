@@ -4,7 +4,7 @@ documents: null
 generates:
   src/generated/graphql.ts:
     config:
-      contextType: ./utils/context#Context
+      contextType: ../utils/context#Context
     plugins:
       - "typescript"
       - "typescript-resolvers"

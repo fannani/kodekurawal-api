@@ -33,6 +33,9 @@ describe('[User]', () => {
     };
     client = createTestClient(testingServer);
   });
+  afterAll(() => {
+
+  })
   it('return user and token after signUp', async () => {
     const result = await client.mutate({
       mutation: SIGNUP,
