@@ -41,6 +41,12 @@ export type AnswerInput = {
   answer?: Maybe<Scalars['String']>,
 };
 
+export type AuthPayload = {
+   __typename?: 'AuthPayload',
+  tokens?: Maybe<Tokens>,
+  user?: Maybe<User>,
+};
+
 export type Avatar = {
    __typename?: 'Avatar',
   _id: Scalars['ID'],
@@ -134,8 +140,8 @@ export type Mission = {
 
 export type Mutation = {
    __typename?: 'Mutation',
-  signUp?: Maybe<User>,
-  signIn?: Maybe<User>,
+  signUp?: Maybe<AuthPayload>,
+  signIn?: Maybe<AuthPayload>,
   addTestCase?: Maybe<TestCase>,
   deleteTestcase?: Maybe<TestCase>,
   addStage?: Maybe<Stage>,
@@ -689,6 +695,12 @@ export type TestCaseMission = {
   updated_at: Scalars['String'],
 };
 
+export type Tokens = {
+   __typename?: 'Tokens',
+  accessToken?: Maybe<Scalars['String']>,
+  refreshToken?: Maybe<Scalars['String']>,
+};
+
 
 export type User = {
    __typename?: 'User',
@@ -807,6 +819,8 @@ export type ResolversTypes = {
   MaterialWhere: MaterialWhere,
   File: ResolverTypeWrapper<File>,
   Mutation: ResolverTypeWrapper<{}>,
+  AuthPayload: ResolverTypeWrapper<AuthPayload>,
+  Tokens: ResolverTypeWrapper<Tokens>,
   Upload: ResolverTypeWrapper<Scalars['Upload']>,
   QuizInput: QuizInput,
   QuestionInput: QuestionInput,
@@ -849,6 +863,8 @@ export type ResolversParentTypes = {
   MaterialWhere: MaterialWhere,
   File: File,
   Mutation: {},
+  AuthPayload: AuthPayload,
+  Tokens: Tokens,
   Upload: Scalars['Upload'],
   QuizInput: QuizInput,
   QuestionInput: QuestionInput,
@@ -880,6 +896,12 @@ export type AchievementDetailResolvers<ContextType = Context, ParentType extends
   caption?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   target_point?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
   updated_at?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  __isTypeOf?: isTypeOfResolverFn<ParentType>,
+};
+
+export type AuthPayloadResolvers<ContextType = Context, ParentType extends ResolversParentTypes['AuthPayload'] = ResolversParentTypes['AuthPayload']> = {
+  tokens?: Resolver<Maybe<ResolversTypes['Tokens']>, ParentType, ContextType>,
+  user?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>,
   __isTypeOf?: isTypeOfResolverFn<ParentType>,
 };
 
@@ -948,8 +970,8 @@ export type MissionResolvers<ContextType = Context, ParentType extends Resolvers
 };
 
 export type MutationResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  signUp?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationSignUpArgs, 'name' | 'email' | 'password' | 'role'>>,
-  signIn?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationSignInArgs, 'email' | 'password'>>,
+  signUp?: Resolver<Maybe<ResolversTypes['AuthPayload']>, ParentType, ContextType, RequireFields<MutationSignUpArgs, 'name' | 'email' | 'password' | 'role'>>,
+  signIn?: Resolver<Maybe<ResolversTypes['AuthPayload']>, ParentType, ContextType, RequireFields<MutationSignInArgs, 'email' | 'password'>>,
   addTestCase?: Resolver<Maybe<ResolversTypes['TestCase']>, ParentType, ContextType, RequireFields<MutationAddTestCaseArgs, 'caption' | 'script'>>,
   deleteTestcase?: Resolver<Maybe<ResolversTypes['TestCase']>, ParentType, ContextType, RequireFields<MutationDeleteTestcaseArgs, 'id'>>,
   addStage?: Resolver<Maybe<ResolversTypes['Stage']>, ParentType, ContextType, RequireFields<MutationAddStageArgs, 'title' | 'course'>>,
@@ -1129,6 +1151,12 @@ export type TestCaseMissionResolvers<ContextType = Context, ParentType extends R
   __isTypeOf?: isTypeOfResolverFn<ParentType>,
 };
 
+export type TokensResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Tokens'] = ResolversParentTypes['Tokens']> = {
+  accessToken?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  refreshToken?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  __isTypeOf?: isTypeOfResolverFn<ParentType>,
+};
+
 export interface UploadScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['Upload'], any> {
   name: 'Upload'
 }
@@ -1150,6 +1178,7 @@ export type UserResolvers<ContextType = Context, ParentType extends ResolversPar
 export type Resolvers<ContextType = Context> = {
   Achievement?: AchievementResolvers<ContextType>,
   AchievementDetail?: AchievementDetailResolvers<ContextType>,
+  AuthPayload?: AuthPayloadResolvers<ContextType>,
   Avatar?: AvatarResolvers<ContextType>,
   Badge?: BadgeResolvers<ContextType>,
   Course?: CourseResolvers<ContextType>,
@@ -1168,6 +1197,7 @@ export type Resolvers<ContextType = Context> = {
   Stage?: StageResolvers<ContextType>,
   TestCase?: TestCaseResolvers<ContextType>,
   TestCaseMission?: TestCaseMissionResolvers<ContextType>,
+  Tokens?: TokensResolvers<ContextType>,
   Upload?: GraphQLScalarType,
   User?: UserResolvers<ContextType>,
 };

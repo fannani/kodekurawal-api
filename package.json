@@ -13,6 +13,8 @@
   "author": "rahadyan fannani",
   "license": "ISC",
   "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/jsonwebtoken": "^8.3.7",
     "@types/lodash": "^4.14.149",
     "apollo-server-express": "^2.10.1",
     "apollo-server-testing": "^2.10.1",
@@ -55,6 +57,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.2",
     "faker": "^4.1.0",
+    "mongodb-memory-server": "^6.2.4",
     "nodemon": "^1.19.4",
     "prettier": "1.19.1",
     "ts-jest": "^25.2.1",

@@ -1,6 +1,14 @@
 import gql from 'graphql-tag';
 
 export default gql`
+  type Tokens {
+    accessToken: String
+    refreshToken: String
+  }
+  type AuthPayload {
+    tokens: Tokens
+    user: User
+  }
   type User {
     _id: ID!
     email: String!
@@ -24,7 +32,7 @@ export default gql`
       email: String!
       password: String!
       role: String!
-    ): User
-    signIn(email: String!, password: String!): User
+    ): AuthPayload
+    signIn(email: String!, password: String!): AuthPayload
   }
 `;

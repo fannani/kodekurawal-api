@@ -27,6 +27,11 @@ type AchievementDetail {
   updated_at: String!
 }
 
+type AuthPayload {
+  tokens: Tokens
+  user: User
+}
+
 type Avatar {
   _id: ID!
   imageid: String
@@ -98,7 +103,7 @@ type Mutation {
   addPlayerAchievement(achievement: ID!, player: ID!, point: Int!, star: Int!): Achievement
   addPlayerLevel(exp_req: Int!, level: Int!): PlayerLevel
   addScore(course: ID!, player: ID!, score: Int!, script: String!, stage: ID!, stars: [Boolean]!, time: Int!): Score
-  addStage(course: ID!, exp_reward: Int, index: Int, language: String, teory: String, time: Int, title: String!, type: StageType): Stage
+  addStage(course: ID!, exp_reward: Int, index: Int, language: String, script: String, teory: String, time: Int, title: String!, type: StageType): Stage
   addTestCase(caption: String!, script: String!): TestCase
   addTestCaseMission(mission: ID!, params: [String], testcase: ID!): TestCaseMission
   changeAvatar(avatar: ID!, player: ID!): Player
@@ -112,10 +117,10 @@ type Mutation {
   deleteTestcase(id: ID!): TestCase
   giveAchievement(achievement: ID!, player: ID!): Achievement
   register(email: String!, name: String!, password: String!): User
-  reorderStage(courseid: ID, destination: Int, source: ID): Course
+  reorderStage(courseid: ID, destination: Int, source: Int): Course
   setTutorial(index: Int, tutorial: Boolean, userid: ID!): Player
-  signIn(email: String!, password: String!): User
-  signUp(email: String!, name: String!, password: String!, role: String!): User
+  signIn(email: String!, password: String!): AuthPayload
+  signUp(email: String!, name: String!, password: String!, role: String!): AuthPayload
   submitQuiz(input: QuizSubmitInput!): Score
   updateBadge(course: ID, id: ID, image: Upload, title: String): Badge
   updateCourse(desc: String, file: Upload, id: ID!, name: String, script: String): Course
@@ -170,7 +175,7 @@ type PlayerLevel {
 
 type Query {
   File(id: ID!): Course
-  achievements(_id: ID): [Achievement]
+  achievements(_id: ID, player: ID): [Achievement]
   allQuiz: [Quiz]
   avatars: [Avatar]
   badges: [Badge]
@@ -255,6 +260,11 @@ type TestCaseMission {
   params: [String]
   testcase: TestCase
   updated_at: String!
+}
+
+type Tokens {
+  accessToken: String
+  refreshToken: String
 }
 
 type User {

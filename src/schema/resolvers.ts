@@ -1,3 +1,4 @@
+import { merge } from 'lodash';
 import user from './user/resolvers';
 import testcase from './testcase/resolvers';
 import quiz from './quiz/resolvers';
@@ -15,7 +16,7 @@ import avatar from './avatar/resolvers';
 import achievement from './achievement/resolvers';
 import achievementDetail from './achievementDetail/resolvers';
 
-export default Object.assign(
+export default merge(
   achievement,
   avatar,
   achievementDetail,
