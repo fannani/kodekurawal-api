@@ -17,6 +17,7 @@ These instructions will get you a copy of the project up and running on your loc
 2. Copy .env.example file to .env on the root folder. You can type `copy .env.example .env` if using command prompt Windows or `cp .env.example .env` if using terminal, Ubuntu.
 3. Open your .env file and change the environment to whatever you have, 
    By default, the server url and the api url is the production api and you can leave it.
+5. Run `yarn codegen` to geneate resolver type definition file
 ### Running app using local environment
 1. Install all package dependency using command `yarn` 
 2. Run `yarn run dev` to start the app
