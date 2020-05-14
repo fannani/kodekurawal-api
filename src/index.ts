@@ -6,6 +6,7 @@ import path from 'path';
 import mongoose from 'mongoose';
 import * as admin from 'firebase-admin';
 import apollo from './utils/apollo';
+import { validateTokensMiddleware } from './utils/auth';
 
 const serviceAccount = require('../firebasekey.json');
 
@@ -15,7 +16,6 @@ admin.initializeApp({
 });
 dotenv.config({ path: path.join(__dirname, '../.env') });
 
-// SETUP MONGOOSE ORM
 const { ObjectId } = mongoose.Types;
 mongoose.connect(process.env.DB_HOST as string, {
   useNewUrlParser: true,
@@ -30,13 +30,13 @@ ObjectId.prototype.valueOf = function() {
 const db = mongoose.connection;
 db.once('open', () => console.log('connected to the database'));
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-// END SETUP MONGOOSE
 
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(validateTokensMiddleware);
 
 apollo.applyMiddleware({
   app,

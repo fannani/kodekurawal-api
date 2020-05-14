@@ -1,6 +1,21 @@
 import mongoose, { Schema } from 'mongoose';
 import { compare } from 'bcryptjs';
 
+export interface IUser extends mongoose.Document {
+  email: string;
+  role: string;
+  hash: string;
+  salt: string;
+  name: string;
+  city: string;
+  province: string;
+  password: string;
+  last_login: Date;
+  token_count: number;
+  userdetailid: Schema.Types.ObjectId;
+  updated_at: Date;
+}
+
 const UserSchema = new Schema({
   email: String,
   role: String,
@@ -23,4 +38,4 @@ UserSchema.methods.verifyPassword = function(password: string) {
   // return this.hash === hash;
 };
 
-export default mongoose.model('User', UserSchema);
+export default mongoose.model<IUser>('User', UserSchema);
