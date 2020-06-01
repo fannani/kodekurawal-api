@@ -1,6 +1,10 @@
 import gql from 'graphql-tag';
 
 export default gql`
+  enum Role {
+    ADMIN
+    USER
+  }
   type Tokens {
     accessToken: String
     refreshToken: String
@@ -19,6 +23,7 @@ export default gql`
     last_login: String
     userdetailid: String!
     password: String!
+    player: Player
     updated_at: String!
   }
 
@@ -31,7 +36,7 @@ export default gql`
       name: String!
       email: String!
       password: String!
-      role: String!
+      role: Role!
     ): AuthPayload
     signIn(email: String!, password: String!): AuthPayload
   }

@@ -107,6 +107,7 @@ type Mutation {
   addTestCase(caption: String!, script: String!): TestCase
   addTestCaseMission(mission: ID!, params: [String], testcase: ID!): TestCaseMission
   changeAvatar(avatar: ID!, player: ID!): Player
+  compile(script: String!): String
   createMaterial(input: MaterialInput!): Material
   createQuiz(input: QuizInput!): Quiz
   deleteCourse(id: ID!): Course
@@ -120,7 +121,7 @@ type Mutation {
   reorderStage(courseid: ID, destination: Int, source: Int): Course
   setTutorial(index: Int, tutorial: Boolean, userid: ID!): Player
   signIn(email: String!, password: String!): AuthPayload
-  signUp(email: String!, name: String!, password: String!, role: String!): AuthPayload
+  signUp(email: String!, name: String!, password: String!, role: Role!): AuthPayload
   submitQuiz(input: QuizSubmitInput!): Score
   updateBadge(course: ID, id: ID, image: Upload, title: String): Badge
   updateCourse(desc: String, file: Upload, id: ID!, name: String, script: String): Course
@@ -293,6 +294,11 @@ enum MaterialType {
 enum QuestionType {
   ESSAY
   MULTIPLE_CHOICE
+}
+
+enum Role {
+  ADMIN
+  USER
 }
 
 enum StageType {

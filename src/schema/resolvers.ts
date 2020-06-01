@@ -15,6 +15,8 @@ import badge from './badge/resolvers';
 import avatar from './avatar/resolvers';
 import achievement from './achievement/resolvers';
 import achievementDetail from './achievementDetail/resolvers';
+import stage from './stage/resolvers';
+import compiler from './compiler/resolvers';
 
 export default merge(
   achievement,
@@ -23,6 +25,7 @@ export default merge(
   badge,
   course,
   testcase,
+  stage,
   user,
   file,
   leaderboard,
@@ -32,5 +35,6 @@ export default merge(
   quiz,
   missionTestcase,
   mission,
-  material
+  material,
+  compiler
 );

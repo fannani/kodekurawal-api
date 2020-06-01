@@ -14,9 +14,10 @@ import PlayerAchievement from './playerAchievement/typeDef';
 import PlayerLevel from './playerLevel/typeDef';
 import Quiz from './quiz/typeDef';
 import Score from './score/typeDef';
-import Stage from './stage/typeDef';
 import Testcase from './testcase/typeDef';
 import User from './user/typeDef';
+import Compiler from './compiler/typeDef';
+import Stage from './stage/typeDef';
 
 const typeDef = gql`
   type Mutation
@@ -42,5 +43,7 @@ export default [
   Avatar,
   Badge,
   Course,
+  Stage,
   File,
+  Compiler,
 ];

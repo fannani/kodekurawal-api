@@ -135,6 +135,7 @@ export type Mission = {
   quest: Scalars['String'],
   score: Scalars['Int'],
   testcase?: Maybe<Array<Maybe<TestCaseMission>>>,
+  stage?: Maybe<Stage>,
   updated_at: Scalars['String'],
 };
 
@@ -182,6 +183,7 @@ export type Mutation = {
   deleteCourse?: Maybe<Course>,
   uploadImage?: Maybe<Scalars['String']>,
   uploadFile?: Maybe<File>,
+  compile?: Maybe<Scalars['String']>,
 };
 
 
@@ -189,7 +191,7 @@ export type MutationSignUpArgs = {
   name: Scalars['String'],
   email: Scalars['String'],
   password: Scalars['String'],
-  role: Scalars['String']
+  role: Role
 };
 
 
@@ -467,6 +469,11 @@ export type MutationUploadFileArgs = {
   input: FileInput
 };
 
+
+export type MutationCompileArgs = {
+  script: Scalars['String']
+};
+
 export type Player = {
    __typename?: 'Player',
   _id: Scalars['ID'],
@@ -634,6 +641,11 @@ export type QuizWhere = {
   stage?: Maybe<Scalars['ID']>,
 };
 
+export enum Role {
+  Admin = 'ADMIN',
+  User = 'USER'
+}
+
 export type Score = {
    __typename?: 'Score',
   _id: Scalars['ID'],
@@ -713,6 +725,7 @@ export type User = {
   last_login?: Maybe<Scalars['String']>,
   userdetailid: Scalars['String'],
   password: Scalars['String'],
+  player?: Maybe<Player>,
   updated_at: Scalars['String'],
 };
 
@@ -793,25 +806,25 @@ export type ResolversTypes = {
   ID: ResolverTypeWrapper<Scalars['ID']>,
   User: ResolverTypeWrapper<User>,
   String: ResolverTypeWrapper<Scalars['String']>,
-  TestCase: ResolverTypeWrapper<TestCase>,
-  Stage: ResolverTypeWrapper<Stage>,
+  Player: ResolverTypeWrapper<Player>,
   Int: ResolverTypeWrapper<Scalars['Int']>,
+  Avatar: ResolverTypeWrapper<Avatar>,
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
+  Badge: ResolverTypeWrapper<Badge>,
+  Achievement: ResolverTypeWrapper<Achievement>,
+  AchievementDetail: ResolverTypeWrapper<AchievementDetail>,
+  Course: ResolverTypeWrapper<Course>,
+  Stage: ResolverTypeWrapper<Stage>,
   StageType: StageType,
   Mission: ResolverTypeWrapper<Mission>,
   TestCaseMission: ResolverTypeWrapper<TestCaseMission>,
+  TestCase: ResolverTypeWrapper<TestCase>,
   Quiz: ResolverTypeWrapper<Quiz>,
   Question: ResolverTypeWrapper<Question>,
   QuestionType: QuestionType,
   Material: ResolverTypeWrapper<Material>,
   MaterialType: MaterialType,
-  Course: ResolverTypeWrapper<Course>,
-  Badge: ResolverTypeWrapper<Badge>,
   Leaderboard: ResolverTypeWrapper<Leaderboard>,
-  Player: ResolverTypeWrapper<Player>,
-  Avatar: ResolverTypeWrapper<Avatar>,
-  Achievement: ResolverTypeWrapper<Achievement>,
-  AchievementDetail: ResolverTypeWrapper<AchievementDetail>,
   Score: ResolverTypeWrapper<Score>,
   QuizWhere: QuizWhere,
   PlayerLevel: ResolverTypeWrapper<PlayerLevel>,
@@ -819,6 +832,7 @@ export type ResolversTypes = {
   MaterialWhere: MaterialWhere,
   File: ResolverTypeWrapper<File>,
   Mutation: ResolverTypeWrapper<{}>,
+  Role: Role,
   AuthPayload: ResolverTypeWrapper<AuthPayload>,
   Tokens: ResolverTypeWrapper<Tokens>,
   Upload: ResolverTypeWrapper<Scalars['Upload']>,
@@ -837,25 +851,25 @@ export type ResolversParentTypes = {
   ID: Scalars['ID'],
   User: User,
   String: Scalars['String'],
-  TestCase: TestCase,
-  Stage: Stage,
+  Player: Player,
   Int: Scalars['Int'],
+  Avatar: Avatar,
   Boolean: Scalars['Boolean'],
+  Badge: Badge,
+  Achievement: Achievement,
+  AchievementDetail: AchievementDetail,
+  Course: Course,
+  Stage: Stage,
   StageType: StageType,
   Mission: Mission,
   TestCaseMission: TestCaseMission,
+  TestCase: TestCase,
   Quiz: Quiz,
   Question: Question,
   QuestionType: QuestionType,
   Material: Material,
   MaterialType: MaterialType,
-  Course: Course,
-  Badge: Badge,
   Leaderboard: Leaderboard,
-  Player: Player,
-  Avatar: Avatar,
-  Achievement: Achievement,
-  AchievementDetail: AchievementDetail,
   Score: Score,
   QuizWhere: QuizWhere,
   PlayerLevel: PlayerLevel,
@@ -863,6 +877,7 @@ export type ResolversParentTypes = {
   MaterialWhere: MaterialWhere,
   File: File,
   Mutation: {},
+  Role: Role,
   AuthPayload: AuthPayload,
   Tokens: Tokens,
   Upload: Scalars['Upload'],
@@ -965,6 +980,7 @@ export type MissionResolvers<ContextType = Context, ParentType extends Resolvers
   quest?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   score?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
   testcase?: Resolver<Maybe<Array<Maybe<ResolversTypes['TestCaseMission']>>>, ParentType, ContextType>,
+  stage?: Resolver<Maybe<ResolversTypes['Stage']>, ParentType, ContextType>,
   updated_at?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   __isTypeOf?: isTypeOfResolverFn<ParentType>,
 };
@@ -1012,6 +1028,7 @@ export type MutationResolvers<ContextType = Context, ParentType extends Resolver
   deleteCourse?: Resolver<Maybe<ResolversTypes['Course']>, ParentType, ContextType, RequireFields<MutationDeleteCourseArgs, 'id'>>,
   uploadImage?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, MutationUploadImageArgs>,
   uploadFile?: Resolver<Maybe<ResolversTypes['File']>, ParentType, ContextType, RequireFields<MutationUploadFileArgs, 'input'>>,
+  compile?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, RequireFields<MutationCompileArgs, 'script'>>,
 };
 
 export type PlayerResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Player'] = ResolversParentTypes['Player']> = {
@@ -1171,6 +1188,7 @@ export type UserResolvers<ContextType = Context, ParentType extends ResolversPar
   last_login?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   userdetailid?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   password?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  player?: Resolver<Maybe<ResolversTypes['Player']>, ParentType, ContextType>,
   updated_at?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   __isTypeOf?: isTypeOfResolverFn<ParentType>,
 };

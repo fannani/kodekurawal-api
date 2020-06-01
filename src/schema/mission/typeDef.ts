@@ -6,11 +6,12 @@ export default gql`
     quest: String!
     score: Int!
     testcase: [TestCaseMission]
+    stage: Stage
     updated_at: String!
   }
 
   extend type Query {
-    missions: [Mission]
+    missions(_id: ID): [Mission]
   }
 
   extend type Mutation {
