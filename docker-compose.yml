@@ -11,8 +11,10 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     restart: always
+    depends_on:
+      - mongo
     ports:
-      - "3000:3000"
+      - "3000:4000"
     volumes:
       - ./usr/src/app/node_modules
       - ./src:/usr/src/app/src
