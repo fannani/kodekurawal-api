@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
 		<div align="center">
 			___________________
 			<br/>
-			Welcome to KodeKurawal API 1.3.1-beta
+			Welcome to KodeKurawal API 2.0.1-beta
 			<br/>
 			______🚀😀🚀_____
 		</div>
