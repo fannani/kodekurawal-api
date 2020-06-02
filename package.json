@@ -1,12 +1,12 @@
 {
   "name": "kodekurawal-api",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
     "build": "tsc",
-    "start": "node ./build/index.js",
+    "start": "node ./build/src/index.js",
     "test": "jest",
     "codegen": "graphql-codegen --config codegen.yml"
   },
