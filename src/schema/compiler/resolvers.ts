@@ -14,6 +14,8 @@ const resolvers: Resolvers = {
       } catch (e) {
         console.log(e);
       }
+      result = result.replace(/(?:\r\n|\r|\n)/g, '\\n').replace(/"/g, '\\"');
+      console.log(result);
       return result;
     },
   },
