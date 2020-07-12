@@ -17,6 +17,7 @@ import achievement from './achievement/resolvers';
 import achievementDetail from './achievementDetail/resolvers';
 import stage from './stage/resolvers';
 import compiler from './compiler/resolvers';
+import score from './score/resolver';
 
 export default merge(
   achievement,
@@ -36,5 +37,6 @@ export default merge(
   missionTestcase,
   mission,
   material,
-  compiler
+  compiler,
+  score
 );

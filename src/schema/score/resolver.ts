@@ -15,7 +15,7 @@ const resolvers: Resolvers = {
       return models.stage.findOne({ _id: score.stage });
     },
     stages: async ({ _id }, __, { models }) => {
-      const score = await models.course.findOne({ _id });
+      const score = await models.score.findOne({ _id });
       const course = await models.course.findById(score.course);
       return course.player(score.player);
     },
@@ -31,7 +31,7 @@ const resolvers: Resolvers = {
       { player, stage, score, time, stars, course, script },
       { models }
     ) => {
-      const newscore = models.score.create({
+      return models.score.create({
         player,
         stage,
         score,
@@ -40,7 +40,6 @@ const resolvers: Resolvers = {
         course,
         script,
       });
-      return newscore.save();
     },
   },
 };
